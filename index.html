@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Year 6 English • Unit 1: It's an Emergency! (pp. 8–21)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fredoka', 'Noto Sans SC', sans-serif;
+      background: linear-gradient(135deg, #FEF2F2 0%, #FFFBEB 48%, #E0F2FE 100%);
+      min-height: 100vh;
+      user-select: none;
+      overflow-x: hidden;
+    }
+
+    /* 主立体卡片容器 */
+    .panel-card {
+      background: rgba(255, 255, 255, 0.96);
+      border: 4px solid #0284C7;
+      box-shadow: 0 10px 0 #0369A1, 0 18px 28px rgba(3, 105, 161, 0.16);
+      border-radius: 28px;
+    }
+
+    /* 闪卡容器 */
+    .flashcard-box {
+      background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 4px solid #F59E0B;
+      box-shadow: 0 8px 0 #D97706;
+      border-radius: 24px;
+      transition: all 0.25s ease;
+    }
+    .flashcard-box.is-grammar {
+      background: linear-gradient(180deg, #F5F3FF 0%, #EDE9FE 100%);
+      border-color: #8B5CF6;
+      box-shadow: 0 8px 0 #6D28D9;
+    }
+
+    /* 3D 按钮特效 */
+    .btn-3d {
+      transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      top: 0;
+    }
+    .btn-3d:active:not(:disabled) {
+      top: 4px;
+      box-shadow: 0 1px 0 currentColor !important;
+    }
+    .btn-3d:disabled {
+      opacity: 0.52;
+      cursor: not-allowed;
+      filter: grayscale(35%);
+    }
+
+    /* 选项按钮 */
+    .option-btn {
+      background: #FFFFFF;
+      border: 3px solid #7DD3FC;
+      box-shadow: 0 5px 0 #38BDF8;
+      color: #0C4A6E;
+    }
+    .option-btn:hover:not(:disabled) {
+      background: #F0F9FF;
+      border-color: #0284C7;
+      transform: translateY(-2px);
+    }
+
+    /* 弹跳出现动画 */
+    @keyframes popIn {
+      0% { transform: scale(0.84); opacity: 0; }
+      75% { transform: scale(1.04); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-pop {
+      animation: popIn 0.28s ease-out forwards;
+    }
+
+    /* 答错抖动 */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-7px); }
+      40%, 80% { transform: translateX(7px); }
+    }
+    .animate-shake {
+      animation: shake 0.38s ease-in-out;
+    }
+
+    /* 句子挖空槽 */
+    .blank-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 118px;
+      padding: 2px 12px;
+      margin: 0 4px;
+      border-bottom: 4px dashed #F59E0B;
+      background-color: #FEF3C7;
+      border-radius: 10px;
+      color: #B45309;
+      font-weight: 800;
+      transition: all 0.25s ease;
+    }
+    .blank-slot.filled-right {
+      border-bottom: 4px solid #10B981;
+      background-color: #D1FAE5;
+      color: #065F46;
+      transform: scale(1.04);
+    }
+    .blank-slot.filled-wrong {
+      border-bottom: 4px solid #EF4444;
+      background-color: #FEE2E2;
+      color: #991B1B;
+    }
+
+    /* 较难字华语括弧注释 */
+    .hint-cn {
+      color: #4338CA;
+      font-size: 0.78em;
+      font-weight: 700;
+      background: #EEF2FF;
+      border: 1px solid #C7D2FE;
+      padding: 1px 6px;
+      border-radius: 8px;
+      margin-left: 2px;
+      display: inline-block;
+    }
+
+    /* 朗读声波动画 */
+    .wave-bar {
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      background-color: #0284C7;
+      margin: 0 2px;
+      border-radius: 99px;
+      animation: waveBounce 0.6s infinite ease-in-out alternate;
+    }
+    .wave-bar:nth-child(2) { animation-delay: 0.15s; height: 20px; }
+    .wave-bar:nth-child(3) { animation-delay: 0.3s; height: 12px; }
+    .wave-bar:nth-child(4) { animation-delay: 0.45s; height: 18px; }
+    @keyframes waveBounce {
+      0% { transform: scaleY(0.4); }
+      100% { transform: scaleY(1.25); }
+    }
+
+    /* 倒计时最后 6 秒红框紧张呼吸闪烁 */
+    @keyframes urgentBorder {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.58); border-color: #EF4444; }
+      50% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); border-color: #B91C1C; }
+    }
+    .tension-border {
+      animation: urgentBorder 0.55s infinite;
+    }
+  </style>
+</head>
+<body class="p-3 sm:p-5 flex flex-col items-center">
+
+  <!-- ==================== 顶部导航与音效/语速控制栏 ==================== -->
+  <header class="w-full max-w-7xl flex flex-wrap items-center justify-between gap-2 mb-4 px-1">
+    <div class="flex items-center gap-2.5 bg-white/95 px-4 py-2 rounded-full shadow-md border-2 border-rose-400">
+      <span class="text-2xl">🚨</span>
+      <div>
+        <h1 class="text-sm sm:text-lg font-black text-rose-950 leading-tight">Year 6 English • Unit 1: It's an Emergency! (pp. 8–21)</h1>
+        <p class="text-xs text-rose-700 font-bold">左栏 Flashcard 精读 (5秒/张) ➔ 右栏两阶段闯关 (读完句才作答 • 20秒)</p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- 英文朗读语速调节 -->
+      <div class="flex items-center gap-1 bg-white/95 px-3 py-1.5 rounded-2xl border-2 border-sky-300 text-xs font-extrabold text-sky-900 shadow-sm">
+        <span>🗣️ 语速:</span>
+        <select id="speechRateSelect" class="bg-sky-50 border border-sky-300 rounded-lg px-1.5 py-0.5 font-black text-sky-800 focus:outline-none">
+          <option value="0.72">慢速 0.72x</option>
+          <option value="0.85" selected>标准 0.85x</option>
+          <option value="1.0">正常 1.0x</option>
+        </select>
+      </div>
+
+      <!-- 背景音乐开关 -->
+      <button id="bgmBtn" onclick="toggleBGM()" class="btn-3d bg-amber-100 border-2 border-amber-400 shadow-[0_4px_0_#D97706] text-amber-900 font-extrabold px-3.5 py-2 rounded-2xl text-xs sm:text-sm flex items-center gap-1.5">
+        <span id="bgmIcon">🎵</span>
+        <span id="bgmText">背景音乐开</span>
+      </button>
+
+      <!-- 返回主页 -->
+      <button id="homeBtn" onclick="returnToMenu()" class="hidden btn-3d bg-rose-100 border-2 border-rose-400 shadow-[0_4px_0_#E11D48] text-rose-800 font-extrabold px-3.5 py-2 rounded-2xl text-xs sm:text-sm">
+        🏠 选择章节
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== 1. 学生登录与章节选择主页 ==================== -->
+  <section id="menuScreen" class="w-full max-w-5xl panel-card p-6 sm:p-8 text-center my-auto">
+    <div class="text-5xl sm:text-6xl mb-2">🚑🚒🚁⚡🆘</div>
+    <span class="inline-block bg-rose-100 text-rose-900 border border-rose-300 px-3.5 py-1 rounded-full text-xs sm:text-sm font-black mb-2">
+      六年级英文 Year 6 • Unit 1 (72 个核心生词 + Unit Focus 三大语法)
+    </span>
+    <h2 class="text-2xl sm:text-4xl font-black text-sky-950 mb-3">Unit 1: It's an Emergency! 闪卡与两阶段闯关</h2>
+
+    <!-- 学生资料输入 -->
+    <div class="bg-sky-50/90 border-2 border-sky-200 rounded-3xl p-4 max-w-lg mx-auto mb-5 text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-black text-sky-900 mb-1">🧑‍🎓 学生姓名 (Student Name)：</label>
+          <input id="studentNameInput" type="text" placeholder="例如：Tan Jia Wen 陈佳雯" class="w-full px-3.5 py-2 rounded-xl border-2 border-sky-300 font-bold text-gray-800 focus:outline-none focus:border-sky-600 bg-white text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-black text-sky-900 mb-1">🏫 班级 (Class)：</label>
+          <select id="studentClassInput" class="w-full px-3 py-2 rounded-xl border-2 border-sky-300 font-bold text-gray-800 focus:outline-none focus:border-sky-600 bg-white text-sm">
+            <option value="6M">6M</option>
+            <option value="6K">6K</option>
+            <option value="6B">6B</option>
+            <option value="6J">6J</option>
+            <option value="6A">6A</option>
+            <option value="6C">6C</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分组闯关选择卡片（方便按课堂进度分组或全单元挑战） -->
+    <div class="text-left max-w-4xl mx-auto mb-5">
+      <div class="text-xs sm:text-sm font-black text-sky-900 mb-2.5 text-center">
+        👇 请选择要学习的关卡分组（每组均包含：左栏 5秒/张 强制闪卡 ➔ 右栏 Stage 1 生词 + Stage 2 句子填空与 Grammar）：
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <button onclick="startModule('part1')" class="btn-3d bg-amber-50 hover:bg-amber-100 border-3 border-amber-400 shadow-[0_5px_0_#D97706] rounded-2xl p-4 text-left">
+          <span class="bg-amber-500 text-white text-xs font-black px-2 py-0.5 rounded-md">第 1 组 • 24 词</span>
+          <div class="text-base font-black text-amber-950 mt-1">📖 Part 1: 生词 #1 – #24</div>
+          <p class="text-xs font-bold text-amber-800 mt-1">emergency 紧急情况 ➔ screamed 尖叫 (含课文第 4–6 页)</p>
+        </button>
+
+        <button onclick="startModule('part2')" class="btn-3d bg-sky-50 hover:bg-sky-100 border-3 border-sky-400 shadow-[0_5px_0_#0284C7] rounded-2xl p-4 text-left">
+          <span class="bg-sky-600 text-white text-xs font-black px-2 py-0.5 rounded-md">第 2 组 • 24 词</span>
+          <div class="text-base font-black text-sky-950 mt-1">🚒 Part 2: 生词 #25 – #48</div>
+          <p class="text-xs font-bold text-sky-800 mt-1">scary 恐怖的 ➔ life jacket 救生衣 (含课文第 6–8 页)</p>
+        </button>
+
+        <button onclick="startModule('part3')" class="btn-3d bg-emerald-50 hover:bg-emerald-100 border-3 border-emerald-400 shadow-[0_5px_0_#059669] rounded-2xl p-4 text-left">
+          <span class="bg-emerald-600 text-white text-xs font-black px-2 py-0.5 rounded-md">第 3 组 • 24 词</span>
+          <div class="text-base font-black text-emerald-950 mt-1">🚁 Part 3: 生词 #49 – #72</div>
+          <p class="text-xs font-bold text-emerald-800 mt-1">rescue boat 救生船 ➔ hugged 拥抱 (含课文第 8–11 页)</p>
+        </button>
+
+        <button onclick="startModule('grammar')" class="btn-3d bg-purple-50 hover:bg-purple-100 border-3 border-purple-400 shadow-[0_5px_0_#7C3AED] rounded-2xl p-4 text-left">
+          <span class="bg-purple-600 text-white text-xs font-black px-2 py-0.5 rounded-md">语法专练 • 6 卡 + 8 题</span>
+          <div class="text-base font-black text-purple-950 mt-1">🧠 Unit Focus: 语法专题</div>
+          <p class="text-xs font-bold text-purple-800 mt-1">名动同形词、when/while 过去进行时、-ing vs -ed 形容词</p>
+        </button>
+
+        <button onclick="startModule('all')" class="sm:col-span-2 btn-3d bg-gradient-to-r from-rose-500 to-orange-500 border-3 border-rose-800 shadow-[0_5px_0_#9F1239] rounded-2xl p-4 text-left text-white">
+          <span class="bg-white/25 text-white text-xs font-black px-2.5 py-0.5 rounded-md">🔥 终极全单元挑战 • 78 张卡</span>
+          <div class="text-base sm:text-lg font-black mt-1">🏆 Full Challenge: 全部 72 生词 + Unit Focus 语法</div>
+          <p class="text-xs font-bold text-rose-100 mt-1">完整通关第 4–13 页所有生词与语法考点，挑战满分大师奖章！</p>
+        </button>
+      </div>
+    </div>
+
+    <!-- 规则说明条 -->
+    <div class="bg-slate-100 border-2 border-slate-200 rounded-2xl p-3 max-w-4xl mx-auto text-xs font-bold text-slate-700 flex flex-wrap justify-center gap-4">
+      <span>🔒 <strong>防跳过机制：</strong>左边每张闪卡需学满 5 秒，全部看完才解锁右边测验</span>
+      <span>🎧 <strong>先听后答：</strong>每题必须等英文朗读完毕才开启 20 秒倒计时</span>
+      <span>🔄 <strong>双步闭环：</strong>选英文后，无论对错都必须接着选出华语意思</span>
+    </div>
+  </section>
+
+  <!-- ==================== 2. 左右分屏学习与闯关工作区 ==================== -->
+  <main id="gameWorkspace" class="hidden w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+
+    <!-- 左栏 (5列)：Flashcard 记忆闪卡区 -->
+    <section class="lg:col-span-5 panel-card p-5 sm:p-6 flex flex-col justify-between border-amber-500 shadow-[0_10px_0_#D97706]">
+      <div>
+        <!-- 左栏顶栏 -->
+        <div class="flex items-center justify-between gap-2 mb-3 pb-3 border-b-2 border-amber-200">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🗂️</span>
+            <div>
+              <h2 class="text-base sm:text-lg font-black text-amber-950">左边：Flashcard 记忆闪卡</h2>
+              <p class="text-xs font-bold text-amber-700">每张至少学习 5 秒，全部看完解锁右边测验</p>
+            </div>
+          </div>
+          <span id="fcCounterBadge" class="bg-amber-200 text-amber-950 font-black px-3 py-1 rounded-full text-xs sm:text-sm">
+            1 / 24
+          </span>
+        </div>
+
+        <!-- 闪卡进度条 -->
+        <div class="w-full h-3 bg-amber-100 rounded-full overflow-hidden border border-amber-300 mb-4">
+          <div id="fcProgressBar" class="h-full bg-amber-500 transition-all duration-300" style="width: 4%;"></div>
+        </div>
+
+        <!-- 闪卡内容卡片 -->
+        <div id="flashcardCard" class="flashcard-box p-4 sm:p-5 text-center">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span id="fcNumTag" class="bg-amber-500 text-white text-xs font-black px-2.5 py-1 rounded-lg">#1</span>
+            <span id="fcTypeTag" class="bg-white/90 border border-amber-300 text-amber-900 text-xs font-extrabold px-2.5 py-1 rounded-lg">📖 Vocabulary 词汇</span>
+            <button onclick="speakCurrentFlashcard()" class="btn-3d bg-sky-500 border-2 border-sky-700 shadow-[0_3px_0_#0369A1] text-white text-xs font-black px-3 py-1 rounded-xl flex items-center gap-1">
+              <span>🔊</span>
+              <span>听朗读</span>
+            </button>
+          </div>
+
+          <div id="fcMainTerm" class="text-2xl sm:text-3xl font-black text-sky-950 mt-2 mb-1">
+            emergency
+          </div>
+
+          <div id="fcMetaInfo" class="hidden text-xs font-extrabold text-purple-800 bg-purple-100/90 border border-purple-300 rounded-xl px-3 py-1 mb-2 inline-block">
+          </div>
+
+          <div class="my-2">
+            <span id="fcChineseMeaning" class="inline-block bg-rose-100 border-2 border-rose-300 text-rose-800 text-lg sm:text-xl font-black px-4 py-1 rounded-2xl">
+              紧急情况
+            </span>
+          </div>
+
+          <div class="bg-amber-100/90 border-2 border-amber-300 rounded-2xl p-3 text-left my-2.5">
+            <div class="text-xs font-black text-amber-900 mb-0.5 flex items-center gap-1">
+              <span>💡</span>
+              <span id="fcTipHeader">记忆小妙招 (Memory Tip)：</span>
+            </div>
+            <p id="fcMemoryTip" class="text-xs sm:text-sm font-bold text-amber-950 leading-relaxed">
+              发生火灾或危险时要找“紧急出口”(emergency exit)，emergency 意为“紧急情况”。
+            </p>
+          </div>
+
+          <div class="bg-white/95 border-2 border-sky-200 rounded-2xl p-3 text-left">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-black text-sky-700">📖 课本例句 (Sentence)：</span>
+              <button onclick="speakCurrentFlashcardSentence()" class="text-xs font-black text-sky-600 hover:underline">🔊 读例句</button>
+            </div>
+            <p id="fcSentence" class="text-sm sm:text-base font-bold text-gray-800 leading-relaxed">
+              'Where is the <span class="text-sky-700 underline font-black">emergency</span> exit (出口)?' asked Riya.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 闪卡底部翻页与 5 秒强制倒计时按钮 -->
+      <div class="mt-4 pt-3 border-t-2 border-amber-100">
+        <div class="flex items-center justify-between gap-3">
+          <button id="fcPrevBtn" onclick="prevFlashcard()" class="btn-3d bg-gray-200 border-2 border-gray-400 shadow-[0_4px_0_#9CA3AF] text-gray-800 font-extrabold px-4 py-3 rounded-2xl text-sm">
+            ⬅️ 上一张
+          </button>
+
+          <button id="fcNextBtn" onclick="nextFlashcard()" disabled class="flex-1 btn-3d bg-emerald-500 border-2 border-emerald-700 shadow-[0_4px_0_#047857] text-white font-black px-4 py-3 rounded-2xl text-sm sm:text-base">
+            <span id="fcNextLabel">⏳ 认真记忆中 (5s)</span>
+          </button>
+        </div>
+
+        <div id="fcUnlockedHint" class="hidden mt-2.5 bg-emerald-100 border-2 border-emerald-400 text-emerald-900 rounded-2xl p-2 text-center text-xs font-black animate-pop">
+          🎉 本组闪卡已全部学完，右边测验已解锁！随时可点左卡复习。
+        </div>
+      </div>
+    </section>
+
+    <!-- 右栏 (7列)：Quiz 两阶段递进闯关区 -->
+    <section id="quizPanel" class="lg:col-span-7 panel-card p-5 sm:p-7 relative flex flex-col justify-between overflow-hidden">
+
+      <!-- 严格防跳过锁定遮罩层 -->
+      <div id="quizLockCover" class="absolute inset-0 bg-slate-900/85 backdrop-blur-xs z-20 flex flex-col items-center justify-center p-6 text-center text-white">
+        <div class="bg-white/15 border-2 border-white/30 rounded-3xl p-6 sm:p-8 max-w-md backdrop-blur-md">
+          <div class="text-6xl mb-3 animate-bounce">🔒</div>
+          <h3 class="text-2xl font-black text-amber-300 mb-2">测验区暂未解锁！</h3>
+          <p class="text-sm sm:text-base font-bold text-sky-100 leading-relaxed mb-4">
+            不能跳过左边的 Flashcard 直接完成测验哦！<br/>
+            请先认真看完左边本组全部 <strong id="lockTotalCardsText">24</strong> 张闪卡（每张至少 5 秒），学完后右边测验会自动开启。
+          </p>
+          <div class="bg-black/45 rounded-2xl px-4 py-2.5 text-sm font-black text-emerald-300 border border-emerald-400/40">
+            闪卡学习进度：<span id="lockProgressText">0 / 24</span> 张已完成
+          </div>
+        </div>
+      </div>
+
+      <!-- 测验上部内容 -->
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-3 border-b-2 border-sky-100">
+          <div class="flex items-center gap-2">
+            <span id="stageBadge" class="bg-sky-600 text-white text-xs font-black px-3 py-1.5 rounded-xl">
+              Stage 1 • 生字音义配对
+            </span>
+            <span class="bg-sky-100 text-sky-950 font-black px-3 py-1.5 rounded-xl border border-sky-300 text-xs sm:text-sm">
+              第 <span id="qNumDisplay" class="text-sky-600 text-base">1</span> / <span id="qTotalDisplay">24</span> 题
+            </span>
+          </div>
+
+          <!-- 朗读中 / 20 秒作答倒计时器 -->
+          <div class="flex-1 min-w-[170px] max-w-xs mx-auto">
+            <div class="flex justify-between items-center text-xs font-black mb-1">
+              <span id="timerPhaseLabel" class="text-sky-700">🔊 正在朗读句子...</span>
+              <span id="timerValueText" class="text-sm sm:text-base text-sky-800 font-black">聆听中</span>
+            </div>
+            <div class="w-full h-3.5 bg-gray-200 rounded-full overflow-hidden border border-gray-300 p-0.5">
+              <div id="timerProgressBar" class="h-full bg-sky-500 rounded-full transition-all duration-200" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <!-- 实时对错统计 -->
+          <div class="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-2xl border border-slate-300 text-xs sm:text-sm font-black">
+            <span class="text-emerald-600">✅ <span id="scoreRight">0</span></span>
+            <span class="text-gray-300">|</span>
+            <span class="text-rose-600">❌ <span id="scoreWrong">0</span></span>
+          </div>
+        </div>
+
+        <!-- 两步作答指示胶囊条 -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+          <div id="pillStep1" class="px-3.5 py-1 rounded-full text-xs font-black bg-sky-600 text-white shadow-sm">
+            1️⃣ 根据英文意思选出英文字
+          </div>
+          <span class="text-gray-400 font-black">➔</span>
+          <div id="pillStep2" class="px-3.5 py-1 rounded-full text-xs font-black bg-gray-200 text-gray-500">
+            2️⃣ 选出该英文字的华语意思
+          </div>
+        </div>
+
+        <!-- 句子朗读锁定提示横幅 -->
+        <div id="speechWaitBanner" class="bg-sky-50 border-2 border-sky-300 rounded-2xl px-4 py-2.5 mb-4 flex items-center justify-center gap-2.5 text-center">
+          <div id="soundWaveAnim" class="flex items-center">
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+          </div>
+          <span id="speechWaitText" class="text-xs sm:text-sm font-black text-sky-900">
+            🔊 正在朗读句子，必须等句子读完后才能作答！
+          </span>
+        </div>
+
+        <!-- 题目展示框 -->
+        <div class="bg-sky-50/90 border-2 border-sky-200 rounded-3xl p-4 sm:p-6 mb-5 text-center relative">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span id="promptHelperNote" class="text-xs font-bold text-indigo-600">💡 听完英文解释后，先选英文字，再选华语意思</span>
+            <button id="replaySentenceBtn" onclick="replayQuizSentence()" disabled class="btn-3d bg-white border border-sky-300 shadow-[0_2px_0_#7DD3FC] text-sky-800 text-xs font-black px-2.5 py-1 rounded-xl">
+              🔁 再听一遍
+            </button>
+          </div>
+          <div id="quizQuestionBox" class="text-lg sm:text-2xl font-black text-slate-800 leading-relaxed">
+            A sudden dangerous situation that needs immediate action.
+          </div>
+        </div>
+
+        <!-- 4 个选项按钮区 -->
+        <div id="quizOptionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        </div>
+      </div>
+
+      <!-- 底部反馈栏 -->
+      <div id="quizFeedbackArea" class="mt-4 pt-3 border-t-2 border-sky-100 text-center min-h-[44px] flex items-center justify-center">
+        <span class="text-xs sm:text-sm font-bold text-gray-500">请先认真听完句子朗读，读完后自动开启 20 秒计时 ⏱️</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 3. Stage 1 通关过渡弹窗（自动引导进入 Stage 2） ==================== -->
+  <div id="stageTransitionModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+    <div class="panel-card max-w-lg w-full p-6 sm:p-8 text-center animate-pop">
+      <div class="text-6xl mb-2">🎯✨🚀</div>
+      <span class="inline-block bg-emerald-100 text-emerald-800 border border-emerald-300 px-3 py-1 rounded-full text-xs font-black mb-2">
+        Stage 1 生字识记关完成！
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-black text-sky-950">准备进入 Stage 2 句子填空 + Grammar 关！</h2>
+      <p id="stage1ScoreSummary" class="text-sm font-extrabold text-indigo-700 mt-1">Stage 1 成绩：0 / 24 题全对</p>
+
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 my-5 text-left text-xs sm:text-sm font-bold text-amber-950 leading-relaxed">
+        <strong>📌 Stage 2 闯关规则：</strong><br/>
+        1. 每题同样有 <strong>20 秒</strong>作答时间，必须<strong>等句子读完后才能作答</strong>；<br/>
+        2. 句子里较难的英文字旁已用<strong>括弧标注华语意思</strong>协助你理解；<br/>
+        3. 先选正确的英文字填入句子，填充后<strong>无论对错</strong>，都必须接着选出该答案的华语意思！
+      </div>
+
+      <button onclick="startStage2()" class="w-full btn-3d bg-gradient-to-r from-purple-600 to-indigo-600 border-2 border-indigo-900 shadow-[0_5px_0_#312E81] text-white font-black text-base sm:text-lg py-3.5 px-6 rounded-2xl">
+        ⚡ 立即开始 Stage 2：句子填空 + Grammar 关卡！
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 4. 最终总通关成绩单弹窗 ==================== -->
+  <div id="summaryModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+    <div class="panel-card max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 text-center animate-pop">
+      <div class="text-6xl mb-2">🏆🎉🌟</div>
+      <h2 class="text-2xl sm:text-3xl font-black text-sky-950">Congratulations! 本组两阶段挑战完成！</h2>
+      <p id="summaryStudentMeta" class="text-sm font-extrabold text-indigo-700 mt-1">Year 6 English • Unit 1: It's an Emergency!</p>
+
+      <div class="grid grid-cols-3 gap-3 my-5">
+        <div class="bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-3">
+          <div class="text-xs font-black text-emerald-700">总答对题数</div>
+          <div id="sumRight" class="text-2xl sm:text-3xl font-black text-emerald-600">0</div>
+        </div>
+        <div class="bg-rose-50 border-2 border-rose-300 rounded-2xl p-3">
+          <div class="text-xs font-black text-rose-700">总答错题数</div>
+          <div id="sumWrong" class="text-2xl sm:text-3xl font-black text-rose-600">0</div>
+        </div>
+        <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl p-3">
+          <div class="text-xs font-black text-sky-700">综合得分率</div>
+          <div id="sumRate" class="text-2xl sm:text-3xl font-black text-sky-600">0%</div>
+        </div>
+      </div>
+
+      <div class="text-left mb-5">
+        <div class="text-xs font-black text-gray-600 mb-1.5">📋 完整答题记录与错题回顾：</div>
+        <div id="sumReviewList" class="max-h-56 overflow-y-auto space-y-1.5 bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs">
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <button onclick="startModule(currentModuleKey)" class="btn-3d bg-emerald-500 border-2 border-emerald-700 shadow-[0_4px_0_#047857] text-white font-black py-3 px-6 rounded-2xl text-sm">
+          🔄 重新挑战本组
+        </button>
+        <button onclick="returnToMenu()" class="btn-3d bg-sky-500 border-2 border-sky-700 shadow-[0_4px_0_#0369A1] text-white font-black py-3 px-6 rounded-2xl text-sm">
+          🏠 返回选择其他分组
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 完整 JavaScript 题库与双阶段游戏逻辑 ==================== -->
+  <script>
+    // =========================================================================
+    // 1. Unit 1: It's an Emergency! (pp. 8–21 第4–11页全部 72 个生词)
+    // =========================================================================
+    const UNIT1_VOCAB = [
+      // --- #1 - #24 (Part 1) ---
+      {
+        id: "1", isGrammar: false, word: "emergency",
+        meta: "Noun 名词 | 紧急出口：emergency exit",
+        meaning: "紧急情况",
+        tip: "火灾、水灾或受伤等突发危险时刻，需要马上求救的“紧急情况”就是 emergency。",
+        enClueSpoken: "A sudden dangerous situation that needs immediate action.",
+        enClueHTML: "A sudden dangerous situation (危险情况) that needs immediate action.",
+        spokenSentence: "Where is the emergency exit? asked Riya.",
+        sentenceHTML: "'Where is the <span class='blank-slot'>______</span> exit (出口)?' asked Riya.",
+        enOptions: ["emergency", "accident", "headline", "experiment"],
+        zhOptions: ["紧急情况", "意外", "(报纸的)标题", "实验"]
+      },
+      {
+        id: "2", isGrammar: false, word: "power cut",
+        meta: "Noun 复合名词 | 停电",
+        meaning: "停电",
+        tip: "建筑物电力供应（electricity supply）突然中断、整栋屋子变黑，就是 power cut（停电）。",
+        enClueSpoken: "A period of time when the electricity supply to a building is stopped.",
+        enClueHTML: "A period of time when the electricity supply (电力供应) to a building is stopped.",
+        spokenSentence: "A power cut is a period of time when the electricity supply to a building is stopped.",
+        sentenceHTML: "A <span class='blank-slot'>______</span> is a period of time when the electricity supply (电力供应) to a building is stopped.",
+        enOptions: ["power cut", "fire drill", "power lines", "traffic lights"],
+        zhOptions: ["停电", "消防演习", "电力线", "交通灯"]
+      },
+      {
+        id: "3", isGrammar: false, word: "call",
+        meta: "Verb 动词 | 打电话求救：call for help",
+        meaning: "呼叫",
+        tip: "看见小偷进屋时打电话求救（call for help），call 意为“呼叫/打电话”。",
+        enClueSpoken: "To shout or telephone someone for help.",
+        enClueHTML: "To shout or telephone (打电话) someone for help.",
+        spokenSentence: "Raymond decided to call for help when he saw the thief entering his house.",
+        sentenceHTML: "Raymond decided to <span class='blank-slot'>______</span> for help when he saw the thief (小偷) entering his house.",
+        enOptions: ["call", "whisper", "escaped", "hugged"],
+        zhOptions: ["呼叫", "小声说话", "逃脱", "拥抱"]
+      },
+      {
+        id: "4", isGrammar: false, word: "help",
+        meta: "Verb/Noun 动词或名词 | 帮助",
+        meaning: "帮助",
+        tip: "志愿者（volunteers）赶来救助水灾灾民（flood victims），help 意为“帮助”。",
+        enClueSpoken: "To make it easier for someone to do something or rescue them.",
+        enClueHTML: "To make it easier for someone to do something or rescue (营救) them.",
+        spokenSentence: "The volunteers are here to help the flood victims.",
+        sentenceHTML: "The volunteers (志愿者) are here to <span class='blank-slot'>______</span> the flood victims (水灾灾民).",
+        enOptions: ["help", "hit", "break", "sinking"],
+        zhOptions: ["帮助", "袭击；发生", "摔断；骨折", "下沉"]
+      },
+      {
+        id: "5", isGrammar: false, word: "website",
+        meta: "Noun 名词 | 网址/网站",
+        meaning: "网站",
+        tip: "公司在互联网上发布（publishes）所有资料的网页平台就是 website（网站）。",
+        enClueSpoken: "A place on the Internet where a company or person puts information.",
+        enClueHTML: "A place on the Internet (互联网) where a company puts information (资料).",
+        spokenSentence: "The company publishes all its information on its website.",
+        sentenceHTML: "The company publishes (发布) all its information on its <span class='blank-slot'>______</span>.",
+        enOptions: ["website", "headline", "caption", "panel"],
+        zhOptions: ["网站", "(报纸的)标题", "说明文字", "栏"]
+      },
+      {
+        id: "6", isGrammar: false, word: "headline",
+        meta: "Noun 名词 | 新闻头条标题",
+        meaning: "(报纸的)标题",
+        tip: "报纸最上方用大号粗体字印出来的新闻大标题就是 headline（例如：A POWER CUT HIT BANGSAR）。",
+        enClueSpoken: "The title of a news story printed in large letters in a newspaper.",
+        enClueHTML: "The title of a news story printed in large letters in a newspaper (报纸).",
+        spokenSentence: "Edwin is reading the headline on the newspaper to his grandfather.",
+        sentenceHTML: "Edwin is reading the <span class='blank-slot'>______</span> on the newspaper to his grandfather.",
+        enOptions: ["headline", "caption", "panel", "lesson"],
+        zhOptions: ["(报纸的)标题", "说明文字", "栏", "教训"]
+      },
+      {
+        id: "7", isGrammar: false, word: "caption",
+        meta: "Noun 名词 | 图片配文",
+        meaning: "(图书、杂志或报纸图片的)说明文字",
+        tip: "写在照片或插图下方、用来解释图片内容的简短文字就是 caption（说明文字）。",
+        enClueSpoken: "Words printed underneath a picture to explain what it shows.",
+        enClueHTML: "Words printed underneath (下方) a picture to explain what it shows.",
+        spokenSentence: "Dhirah is writing a caption for her picture.",
+        sentenceHTML: "Dhirah is writing a <span class='blank-slot'>______</span> for her picture.",
+        enOptions: ["caption", "headline", "panel", "website"],
+        zhOptions: ["(图书、杂志或报纸图片的)说明文字", "(报纸的)标题", "栏", "网站"]
+      },
+      {
+        id: "8", isGrammar: false, word: "panel",
+        meta: "Noun 名词 | 词汇栏：vocabulary panel",
+        meaning: "栏",
+        tip: "课本里专门用来框住重点生词的方格区域叫做 vocabulary panel（词汇栏）。",
+        enClueSpoken: "A rectangular section on a page or board containing words or controls.",
+        enClueHTML: "A rectangular section (长方形区域) on a page containing words or controls.",
+        spokenSentence: "Ben is reading the words from the vocabulary panel.",
+        sentenceHTML: "Ben is reading the words from the vocabulary (词汇) <span class='blank-slot'>______</span>.",
+        enOptions: ["panel", "tunnel", "shelf", "bench"],
+        zhOptions: ["栏", "隧道", "架子", "长凳"]
+      },
+      {
+        id: "9", isGrammar: false, word: "accident",
+        meta: "Noun 名词 | 发生意外：meet with an accident",
+        meaning: "意外",
+        tip: "上学途中不小心撞车或跌伤的突发不幸事件就是 accident（意外）。",
+        enClueSpoken: "An unexpected event that causes injury or damage on the road.",
+        enClueHTML: "An unexpected event (突发事件) that causes injury (受伤) or damage.",
+        spokenSentence: "Joshua met with an accident on his way to school.",
+        sentenceHTML: "Joshua met with an <span class='blank-slot'>______</span> on his way to school.",
+        enOptions: ["accident", "ambulance", "experiment", "concert"],
+        zhOptions: ["意外", "救护车", "实验", "音乐会"]
+      },
+      {
+        id: "10", isGrammar: false, word: "ambulance",
+        meta: "Noun 名词 | 救护车",
+        meaning: "救护车",
+        tip: "停在医院（hospital）门口、专门载送病人或伤者去医院的急救车就是 ambulance（救护车）。",
+        enClueSpoken: "A special vehicle that takes sick or injured people to the hospital.",
+        enClueHTML: "A special vehicle (车辆) that takes sick or injured people to the hospital (医院).",
+        spokenSentence: "There is an ambulance in front of the hospital.",
+        sentenceHTML: "There is an <span class='blank-slot'>______</span> in front of the hospital (医院).",
+        enOptions: ["ambulance", "fire engine", "helicopter", "motorbike"],
+        zhOptions: ["救护车", "消防车", "直升机", "摩托车"]
+      },
+      {
+        id: "11", isGrammar: false, word: "cooker",
+        meta: "Noun 名词 | 注意：cooker 是电锅/炉具，厨师是 cook",
+        meaning: "电锅",
+        tip: "妈妈用来煲汤的电器（electric cooker）是“电锅”；注意厨师叫 cook，千万别搞混！",
+        enClueSpoken: "A kitchen appliance used for cooking food or making soup.",
+        enClueHTML: "A kitchen appliance (厨房电器) used for cooking food or making soup.",
+        spokenSentence: "Mother is using an electric cooker to make some soup.",
+        sentenceHTML: "Mother is using an electric (电动的) <span class='blank-slot'>______</span> to make some soup.",
+        enOptions: ["cooker", "heating", "torch", "bucket"],
+        zhOptions: ["电锅", "供暖系统", "手电筒", "桶"]
+      },
+      {
+        id: "12", isGrammar: false, word: "electricity",
+        meta: "Uncountable Noun 不可数名词 | 电费单：electricity bill",
+        meaning: "电能",
+        tip: "去邮政局缴交的电费单叫做 electricity bill，electricity 指的是“电能/电力”。",
+        enClueSpoken: "A form of energy used to power lights, computers, and machines.",
+        enClueHTML: "A form of energy (能量) used to power lights, computers, and machines.",
+        spokenSentence: "Firdaus is paying the electricity bill at the post office.",
+        sentenceHTML: "Firdaus is paying the <span class='blank-slot'>______</span> bill (账单) at the post office.",
+        enOptions: ["electricity", "heating", "smoke", "traffic"],
+        zhOptions: ["电能", "供暖系统", "烟雾", "交通状况"]
+      },
+      {
+        id: "13", isGrammar: false, word: "embarrassed",
+        meta: "Adjective 形容词 | 原形动词：embarrass",
+        meaning: "尴尬的；窘迫的",
+        tip: "Lisa 在大家面前不小心跌倒，觉得很不好意思、脸红窘迫，就是 embarrassed（尴尬的）。",
+        enClueSpoken: "Feeling shy, uncomfortable, or ashamed when something silly happens.",
+        enClueHTML: "Feeling shy (害羞), uncomfortable, or ashamed when something silly happens.",
+        spokenSentence: "Lisa felt embarrassed because she fell down.",
+        sentenceHTML: "Lisa felt <span class='blank-slot'>______</span> because she fell down (跌倒).",
+        enOptions: ["embarrassed", "frightened", "surprised", "honest"],
+        zhOptions: ["尴尬的；窘迫的", "害怕的", "惊讶的；惊喜的", "诚实的"]
+      },
+      {
+        id: "14", isGrammar: false, word: "heating",
+        meta: "Noun 名词 | 供暖系统",
+        meaning: "供暖系统",
+        tip: "天气寒冷时用来保持屋内温暖的设备叫做 heating（供暖系统）。",
+        enClueSpoken: "The system that keeps a house or building warm in cold weather.",
+        enClueHTML: "The system (系统) that keeps a house or building warm in cold weather.",
+        spokenSentence: "Who turned the heating off? asked Michelle.",
+        sentenceHTML: "'Who turned the <span class='blank-slot'>______</span> off (关掉)?' asked Michelle.",
+        enOptions: ["heating", "alarm", "cooker", "electricity"],
+        zhOptions: ["供暖系统", "警报器", "电锅", "电能"]
+      },
+      {
+        id: "15", isGrammar: false, word: "hit",
+        meta: "Verb 动词 | 过去式同形：hit",
+        meaning: "袭击；发生",
+        tip: "龙卷风（tornado）昨晚猛烈吹袭城市，hit 在灾难新闻中意为“袭击；发生”。",
+        enClueSpoken: "To strike or affect a place suddenly and violently, like a storm.",
+        enClueHTML: "To strike (打击) or affect a place suddenly and violently, like a storm.",
+        spokenSentence: "A tornado hit the city last night.",
+        sentenceHTML: "A tornado (龙卷风) <span class='blank-slot'>______</span> the city last night.",
+        enOptions: ["hit", "escaped", "hugged", "whisper"],
+        zhOptions: ["袭击；发生", "逃脱", "拥抱", "小声说话"]
+      },
+      {
+        id: "16", isGrammar: false, word: "million",
+        meta: "Number 数词 | 1,000,000 (一百万)",
+        meaning: "百万",
+        tip: "海啸（tsunami）影响（affected）了超过一百万（1,000,000）人，million 意为“百万”。",
+        enClueSpoken: "The number 1,000,000, which is one thousand thousands.",
+        enClueHTML: "The number 1,000,000, which is one thousand thousands (一千个一千).",
+        spokenSentence: "Over a million people were affected by the tsunami.",
+        sentenceHTML: "Over a <span class='blank-slot'>______</span> people were affected (受影响) by the tsunami (海啸).",
+        enOptions: ["million", "accurate", "dramatic", "cold"],
+        zhOptions: ["百万", "准确的", "令人印象深刻的", "寒冷的"]
+      },
+      {
+        id: "17", isGrammar: false, word: "power",
+        meta: "Noun 名词 | 电力",
+        meaning: "电力",
+        tip: "电脑室的电力（power）突然中断（went off），power 意为“电力/能量”。",
+        enClueSpoken: "Electrical energy that makes machines and computers work.",
+        enClueHTML: "Electrical energy (电能) that makes machines and computers work.",
+        spokenSentence: "Mila was in the computer lab when the power went off.",
+        sentenceHTML: "Mila was in the computer lab (电脑室) when the <span class='blank-slot'>______</span> went off.",
+        enOptions: ["power", "smoke", "traffic", "space"],
+        zhOptions: ["电力", "烟雾", "交通状况", "太空"]
+      },
+      {
+        id: "18", isGrammar: false, word: "went out",
+        meta: "Phrasal Verb 动词短语 | 原形：go out",
+        meaning: "(灯光)熄灭",
+        tip: "灯光（lights）突然熄灭变黑，小朋友吓得大叫（screamed in fear），went out 指“(灯光)熄灭”。",
+        enClueSpoken: "Stopped shining or burning, especially when lights turn off.",
+        enClueHTML: "Stopped shining (发光) or burning, especially when lights turn off.",
+        spokenSentence: "The little kid screamed in fear when the lights went out.",
+        sentenceHTML: "The little kid screamed in fear (害怕地尖叫) when the lights <span class='blank-slot'>______</span>.",
+        enOptions: ["went out", "went off", "escaped", "sinking"],
+        zhOptions: ["(灯光)熄灭", "中断", "逃脱", "下沉"]
+      },
+      {
+        id: "19", isGrammar: false, word: "rehearsing",
+        meta: "Verb 现在分词 | 原形：rehearse",
+        meaning: "彩排",
+        tip: "正式参加舞蹈比赛（dance competition）前的多次排练就叫做 rehearsing（彩排）。",
+        enClueSpoken: "Practising a play, dance, or music before a public performance.",
+        enClueHTML: "Practising (练习) a play, dance, or music before a public performance (公开演出).",
+        spokenSentence: "The pupils were rehearsing for a dance competition.",
+        sentenceHTML: "The pupils were <span class='blank-slot'>______</span> for a dance competition (舞蹈比赛).",
+        enOptions: ["rehearsing", "travelling", "sinking", "screamed"],
+        zhOptions: ["彩排", "旅行", "下沉", "尖叫"]
+      },
+      {
+        id: "20", isGrammar: false, word: "New York State",
+        meta: "Proper Noun 专有名词 | 三个单词首字母均大写",
+        meaning: "纽约州",
+        tip: "美国东北部著名的州份，时代广场就位于这里，英文是 New York State（纽约州）。",
+        enClueSpoken: "A famous state in the northeastern United States.",
+        enClueHTML: "A famous state (州) in the northeastern United States (美国东北部).",
+        spokenSentence: "Arizah is looking at the New York State map.",
+        sentenceHTML: "Arizah is looking at the <span class='blank-slot'>______</span> map.",
+        enOptions: ["New York State", "North America", "Times Square", "base camp"],
+        zhOptions: ["纽约州", "北美洲", "时代广场", "(尤指登山队的)大本营"]
+      },
+      {
+        id: "21", isGrammar: false, word: "concert",
+        meta: "Noun 名词 | 举办音乐会：hold / held a concert",
+        meaning: "音乐会",
+        tip: "歌手（singer）在澳大利亚举办大型现场演唱表演，就是 concert（音乐会）。",
+        enClueSpoken: "A public performance of music by singers or musicians.",
+        enClueHTML: "A public performance (公开演出) of music by singers or musicians.",
+        spokenSentence: "The singer held a concert in Australia last year.",
+        sentenceHTML: "The singer held (举办) a <span class='blank-slot'>______</span> in Australia last year.",
+        enOptions: ["concert", "fire drill", "experiment", "accident"],
+        zhOptions: ["音乐会", "消防演习", "实验", "意外"]
+      },
+      {
+        id: "22", isGrammar: false, word: "went off",
+        meta: "Phrasal Verb 动词短语 | 原形：go off",
+        meaning: "中断",
+        tip: "电力（power）突然中断停止供应，整间屋子变暗，went off 在此意为“中断”。",
+        enClueSpoken: "Stopped working or stopped supplying electricity suddenly.",
+        enClueHTML: "Stopped working or stopped supplying electricity (供电) suddenly.",
+        spokenSentence: "The house turned dark when the power went off.",
+        sentenceHTML: "The house turned dark (变暗) when the power <span class='blank-slot'>______</span>.",
+        enOptions: ["went off", "went out", "escaped", "hugged"],
+        zhOptions: ["中断", "(灯光)熄灭", "逃脱", "拥抱"]
+      },
+      {
+        id: "23", isGrammar: false, word: "travelling",
+        meta: "Verb/Noun 动名词 | 原形：travel",
+        meaning: "旅行",
+        tip: "乘搭火车（by train）去各地观光游览就是 travelling（旅行）。",
+        enClueSpoken: "Going from one place to another, especially over a long distance.",
+        enClueHTML: "Going from one place to another, especially over a long distance (长途).",
+        spokenSentence: "Rafidah enjoys travelling by train.",
+        sentenceHTML: "Rafidah enjoys (享受) <span class='blank-slot'>______</span> by train.",
+        enOptions: ["travelling", "rehearsing", "sinking", "whisper"],
+        zhOptions: ["旅行", "彩排", "下沉", "小声说话"]
+      },
+      {
+        id: "24", isGrammar: false, word: "screamed",
+        meta: "Verb 过去式 | 原形：scream",
+        meaning: "尖叫",
+        tip: "昨晚在卧室看到蟑螂（cockroach）时吓得大声“尖叫”，screamed 是 scream 的过去式。",
+        enClueSpoken: "Gave a loud, high cry because of fear or pain.",
+        enClueHTML: "Gave a loud, high cry (高声喊叫) because of fear or pain.",
+        spokenSentence: "My sister screamed loudly when she saw a cockroach in her bedroom last night.",
+        sentenceHTML: "My sister <span class='blank-slot'>______</span> loudly when she saw a cockroach (蟑螂) in her bedroom last night.",
+        enOptions: ["screamed", "whisper", "escaped", "hugged"],
+        zhOptions: ["尖叫", "小声说话", "逃脱", "拥抱"]
+      },
+
+      // --- #25 - #48 (Part 2) ---
+      {
+        id: "25", isGrammar: false, word: "scary",
+        meta: "Adjective 形容词 | 恐怖电影：scary movies",
+        meaning: "恐怖的",
+        tip: "让人看了觉得害怕、毛骨悚然的电影（scary movies），scary 意为“恐怖的”。",
+        enClueSpoken: "Frightening or causing fear, such as a horror movie.",
+        enClueHTML: "Frightening or causing fear (引起恐惧), such as a horror movie.",
+        spokenSentence: "Damian does not like watching scary movies.",
+        sentenceHTML: "Damian does not like watching <span class='blank-slot'>______</span> movies.",
+        enOptions: ["scary", "honest", "accurate", "cold"],
+        zhOptions: ["恐怖的", "诚实的", "准确的", "寒冷的"]
+      },
+      {
+        id: "26", isGrammar: false, word: "traffic lights",
+        meta: "Plural Noun 复数名词 | 红绿交通灯",
+        meaning: "交通灯",
+        tip: "马路十字路口用红、黄、绿三色指挥车辆通行的信号灯就是 traffic lights（交通灯）。",
+        enClueSpoken: "Red, yellow, and green lights that control vehicles on the road.",
+        enClueHTML: "Red, yellow, and green lights that control vehicles (控制车辆) on the road.",
+        spokenSentence: "You should turn right at the traffic lights, said the police officer.",
+        sentenceHTML: "'You should turn right at the <span class='blank-slot'>______</span>,' said the police officer.",
+        enOptions: ["traffic lights", "power lines", "fire engine", "headphones"],
+        zhOptions: ["交通灯", "电力线", "消防车", "耳机"]
+      },
+      {
+        id: "27", isGrammar: false, word: "traffic",
+        meta: "Uncountable Noun 不可数名词 | 塞车：bad traffic",
+        meaning: "交通状况",
+        tip: "城市道路上车辆拥挤堵塞（bad traffic）导致上班迟到，traffic 意为“交通状况”。",
+        enClueSpoken: "All the cars and vehicles moving along the roads in a city.",
+        enClueHTML: "All the cars and vehicles (车辆) moving along the roads in a city.",
+        spokenSentence: "John was late for work because of the bad traffic in the city.",
+        sentenceHTML: "John was late for work because of the bad <span class='blank-slot'>______</span> in the city.",
+        enOptions: ["traffic", "smoke", "electricity", "space"],
+        zhOptions: ["交通状况", "烟雾", "电能", "太空"]
+      },
+      {
+        id: "28", isGrammar: false, word: "escaped",
+        meta: "Verb 过去式 | 原形：escape",
+        meaning: "逃脱",
+        tip: "小偷（thief）从警察手中成功挣脱跑掉，escaped 意为“逃脱”。",
+        enClueSpoken: "Got away from a dangerous place or from someone trying to catch you.",
+        enClueHTML: "Got away from a dangerous place or from someone trying to catch (抓捕) you.",
+        spokenSentence: "The thief escaped the police.",
+        sentenceHTML: "The thief (小偷) <span class='blank-slot'>______</span> the police.",
+        enOptions: ["escaped", "hugged", "screamed", "hit"],
+        zhOptions: ["逃脱", "拥抱", "尖叫", "袭击；发生"]
+      },
+      {
+        id: "29", isGrammar: false, word: "North America",
+        meta: "Proper Noun 专有名词 | 北美洲",
+        meaning: "北美洲",
+        tip: "加拿大（Canada）和美国所在的大洲就是 North America（北美洲）。",
+        enClueSpoken: "The northern continent of America, where Canada and the USA are located.",
+        enClueHTML: "The northern continent (北方大洲) where Canada and the USA are located.",
+        spokenSentence: "Canada is a country in North America.",
+        sentenceHTML: "Canada (加拿大) is a country in <span class='blank-slot'>______</span>.",
+        enOptions: ["North America", "New York State", "Times Square", "base camp"],
+        zhOptions: ["北美洲", "纽约州", "时代广场", "(尤指登山队的)大本营"]
+      },
+      {
+        id: "30", isGrammar: false, word: "squirrel",
+        meta: "Noun 动物名词 | 松鼠",
+        meaning: "松鼠",
+        tip: "长着毛茸茸大尾巴、喜欢在树上吃坚果（nuts）的小动物就是 squirrel（松鼠）。",
+        enClueSpoken: "A small furry animal with a bushy tail that lives in trees and eats nuts.",
+        enClueHTML: "A small furry animal with a bushy tail (毛茸茸的尾巴) that eats nuts (坚果).",
+        spokenSentence: "The little squirrel is eating nuts.",
+        sentenceHTML: "The little <span class='blank-slot'>______</span> is eating nuts (坚果).",
+        enOptions: ["squirrel", "astronaut", "captain", "police officer"],
+        zhOptions: ["松鼠", "宇航员", "船长", "警察"]
+      },
+      {
+        id: "31", isGrammar: false, word: "power lines",
+        meta: "Plural Noun 复数名词 | 高压电力线",
+        meaning: "电力线",
+        tip: "架在电线杆上输送电流的电线，掉落（fallen）时非常危险，千万别靠近 power lines（电力线）。",
+        enClueSpoken: "Thick cables high above the ground that carry electricity.",
+        enClueHTML: "Thick cables (粗电缆) high above the ground that carry electricity.",
+        spokenSentence: "You should stay away from fallen power lines because they are dangerous.",
+        sentenceHTML: "You should stay away from fallen (掉落的) <span class='blank-slot'>______</span> because they are dangerous.",
+        enOptions: ["power lines", "traffic lights", "goggles", "headphones"],
+        zhOptions: ["电力线", "交通灯", "护目镜", "耳机"]
+      },
+      {
+        id: "32", isGrammar: false, word: "Times Square",
+        meta: "Proper Noun 专有名词 | 纽约时代广场",
+        meaning: "时代广场",
+        tip: "纽约市中心夜晚灯光璀璨（bright lights）的著名地标就是 Times Square（时代广场）。",
+        enClueSpoken: "A famous bright square in New York City with giant screens and lights.",
+        enClueHTML: "A famous bright square (广场) in New York City with giant screens and lights.",
+        spokenSentence: "Kenny likes walking at Times Square at night to see the bright lights.",
+        sentenceHTML: "Kenny likes walking at <span class='blank-slot'>______</span> at night to see the bright lights (明亮的灯光).",
+        enOptions: ["Times Square", "North America", "New York State", "tunnel"],
+        zhOptions: ["时代广场", "北美洲", "纽约州", "隧道"]
+      },
+      {
+        id: "33", isGrammar: false, word: "ambulance driver",
+        meta: "Noun 职业复合词 | 救护车司机",
+        meaning: "救护车司机",
+        tip: "驾驶救护车飞快赶往急救现场的驾驶员就是 ambulance driver（救护车司机）。",
+        enClueSpoken: "A person who drives an ambulance quickly in an emergency.",
+        enClueHTML: "A person who drives an ambulance (救护车) quickly in an emergency.",
+        spokenSentence: "The ambulance driver is driving very fast.",
+        sentenceHTML: "The <span class='blank-slot'>______</span> is driving very fast.",
+        enOptions: ["ambulance driver", "police officer", "astronaut", "captain"],
+        zhOptions: ["救护车司机", "警察", "宇航员", "船长"]
+      },
+      {
+        id: "34", isGrammar: false, word: "police officer",
+        meta: "Noun 职业复合词 | 警察",
+        meaning: "警察",
+        tip: "游客（tourist）迷路时向身穿制服维持治安的“警察”（police officer）问路（directions）。",
+        enClueSpoken: "A member of the police force who protects people and keeps order.",
+        enClueHTML: "A member of the police force (警队) who protects people and keeps order.",
+        spokenSentence: "The tourist is asking the police officer for directions.",
+        sentenceHTML: "The tourist (游客) is asking the <span class='blank-slot'>______</span> for directions (方向/路线).",
+        enOptions: ["police officer", "ambulance driver", "captain", "astronaut"],
+        zhOptions: ["警察", "救护车司机", "船长", "宇航员"]
+      },
+      {
+        id: "35", isGrammar: false, word: "break",
+        meta: "Noun 名词 | 骨折：a bad break",
+        meaning: "摔断；骨折",
+        tip: "跌倒受伤导致骨头断裂，医学上称为 a bad break（严重骨折/摔断）。",
+        enClueSpoken: "An injury where a bone in the body is cracked or broken.",
+        enClueHTML: "An injury where a bone (骨头) in the body is cracked or broken.",
+        spokenSentence: "Sasi suffered a bad break.",
+        sentenceHTML: "Sasi suffered (遭受) a bad <span class='blank-slot'>______</span>.",
+        enOptions: ["break", "accident", "lesson", "alarm"],
+        zhOptions: ["摔断；骨折", "意外", "教训", "警报器"]
+      },
+      {
+        id: "36", isGrammar: false, word: "tunnel",
+        meta: "Noun 名词 | 隧道",
+        meaning: "隧道",
+        tip: "穿过山体或地底、里面光线非常黑暗（very dark）的地下通道就是 tunnel（隧道）。",
+        enClueSpoken: "An underground passage dug through a hill or under a road.",
+        enClueHTML: "An underground passage (地下通道) dug through a hill or under a road.",
+        spokenSentence: "It is very dark in the tunnel.",
+        sentenceHTML: "It is very dark in the <span class='blank-slot'>______</span>.",
+        enOptions: ["tunnel", "shelf", "bench", "panel"],
+        zhOptions: ["隧道", "架子", "长凳", "栏"]
+      },
+      {
+        id: "37", isGrammar: false, word: "alarm",
+        meta: "Noun 名词 | 警报器响：the alarm rang",
+        meaning: "警报器",
+        tip: "发生火警或紧急情况时发出刺耳铃声警告大家的装置就是 alarm（警报器）。",
+        enClueSpoken: "A device that makes a loud warning sound in case of fire or danger.",
+        enClueHTML: "A device (装置) that makes a loud warning sound in case of fire or danger.",
+        spokenSentence: "Tina and her friends were in the classroom when the alarm rang.",
+        sentenceHTML: "Tina and her friends were in the classroom when the <span class='blank-slot'>______</span> rang (响起).",
+        enOptions: ["alarm", "torch", "guitar", "cooker"],
+        zhOptions: ["警报器", "手电筒", "吉他", "电锅"]
+      },
+      {
+        id: "38", isGrammar: false, word: "experiment",
+        meta: "Noun 名词 | 做实验：carry out an experiment",
+        meaning: "实验",
+        tip: "学生在学校科学实验室（science lab）里动手验证科学原理，就是 experiment（实验）。",
+        enClueSpoken: "A scientific test done in a lab to discover or prove something.",
+        enClueHTML: "A scientific test (科学测试) done in a lab to discover or prove something.",
+        spokenSentence: "The pupils are carrying out an experiment in the school science lab.",
+        sentenceHTML: "The pupils are carrying out (进行) an <span class='blank-slot'>______</span> in the school science lab (科学室).",
+        enOptions: ["experiment", "fire drill", "accident", "concert"],
+        zhOptions: ["实验", "消防演习", "意外", "音乐会"]
+      },
+      {
+        id: "39", isGrammar: false, word: "fire drill",
+        meta: "Noun 复合名词 | 消防演习",
+        meaning: "消防演习",
+        tip: "学校训练大家如何在紧急情况下安全有序撤离建筑物的练习，就是 fire drill（消防演习）。",
+        enClueSpoken: "Practice of what to do and how to leave a building safely during a fire.",
+        enClueHTML: "Practice of how to leave a building safely (安全离开建筑物) during a fire.",
+        spokenSentence: "A fire drill trains people on how to leave a building in case of an emergency.",
+        sentenceHTML: "A <span class='blank-slot'>______</span> trains people on how to leave a building in case of an emergency.",
+        enOptions: ["fire drill", "power cut", "fire engine", "rescue boat"],
+        zhOptions: ["消防演习", "停电", "消防车", "救生船"]
+      },
+      {
+        id: "40", isGrammar: false, word: "fire engine",
+        meta: "Noun 复合名词 | 消防车",
+        meaning: "消防车",
+        tip: "载着消防员、水喉和云梯赶去救火的红色大卡车就是 fire engine（消防车）。",
+        enClueSpoken: "A large red truck that carries firefighters and water to put out fires.",
+        enClueHTML: "A large red truck (红色大卡车) that carries firefighters to put out fires.",
+        spokenSentence: "Tina got excited when she saw the huge fire engine.",
+        sentenceHTML: "Tina got excited (兴奋的) when she saw the huge <span class='blank-slot'>______</span>.",
+        enOptions: ["fire engine", "ambulance", "rescue boat", "helicopter"],
+        zhOptions: ["消防车", "救护车", "救生船", "直升机"]
+      },
+      {
+        id: "41", isGrammar: false, word: "smoke",
+        meta: "Uncountable Noun 不可数名词 | 烟雾",
+        meaning: "烟雾",
+        tip: "小木屋（hut）里冒出滚滚黑烟，看到 smoke（烟雾）就要小心是否着火了。",
+        enClueSpoken: "The grey or black gas that rises into the air from something burning.",
+        enClueHTML: "The grey or black gas (灰黑色气体) that rises from something burning.",
+        spokenSentence: "There is smoke coming from the hut.",
+        sentenceHTML: "There is <span class='blank-slot'>______</span> coming from the hut (小木屋).",
+        enOptions: ["smoke", "electricity", "traffic", "power"],
+        zhOptions: ["烟雾", "电能", "交通状况", "电力"]
+      },
+      {
+        id: "42", isGrammar: false, word: "goggles",
+        meta: "Plural Noun 复数名词 | 泳镜/护目镜",
+        meaning: "护目镜",
+        tip: "跳进游泳池（pool）前戴在眼睛上防水的泳镜，或做实验戴的防护镜，都叫 goggles（护目镜）。",
+        enClueSpoken: "Special glasses that fit closely to protect your eyes in water or a lab.",
+        enClueHTML: "Special glasses (特殊眼镜) that protect your eyes in water or a lab.",
+        spokenSentence: "Laavin wore his goggles before getting into the pool.",
+        sentenceHTML: "Laavin wore his <span class='blank-slot'>______</span> before getting into the pool (游泳池).",
+        enOptions: ["goggles", "headphones", "tracksuit", "life jacket"],
+        zhOptions: ["护目镜", "耳机", "运动服", "救生衣"]
+      },
+      {
+        id: "43", isGrammar: false, word: "tracksuit",
+        meta: "Noun 服装名词 | 运动服套装",
+        meaning: "运动服",
+        tip: "运动员（athlete）去健身房（gym）或跑步时穿的宽松运动衣裤套装就是 tracksuit（运动服）。",
+        enClueSpoken: "A loose warm suit of clothes worn by athletes for sports or exercise.",
+        enClueHTML: "A loose warm suit of clothes worn by athletes (运动员) for sports.",
+        spokenSentence: "The athlete is wearing a branded tracksuit to the gym.",
+        sentenceHTML: "The athlete (运动员) is wearing a branded (名牌的) <span class='blank-slot'>______</span> to the gym.",
+        enOptions: ["tracksuit", "life jacket", "goggles", "headphones"],
+        zhOptions: ["运动服", "救生衣", "护目镜", "耳机"]
+      },
+      {
+        id: "44", isGrammar: false, word: "guitar",
+        meta: "Noun 乐器名词 | 吉他",
+        meaning: "吉他",
+        tip: "有六根琴弦、用手拨弹的流行乐器（musical instrument）就是 guitar（吉他）。",
+        enClueSpoken: "A musical instrument with six strings played with fingers or a pick.",
+        enClueHTML: "A musical instrument (乐器) with six strings played with fingers.",
+        spokenSentence: "John's favourite musical instrument is the guitar.",
+        sentenceHTML: "John's favourite musical instrument (乐器) is the <span class='blank-slot'>______</span>.",
+        enOptions: ["guitar", "torch", "bucket", "alarm"],
+        zhOptions: ["吉他", "手电筒", "桶", "警报器"]
+      },
+      {
+        id: "45", isGrammar: false, word: "bucket",
+        meta: "Noun 名词 | 水桶与铲子：bucket and spades",
+        meaning: "桶",
+        tip: "小朋友在沙滩（beach）玩沙堆城堡时提着的塑料小水桶就是 bucket（桶）。",
+        enClueSpoken: "A round open container with a handle used for carrying water or sand.",
+        enClueHTML: "A round open container (圆形容器) with a handle for carrying water or sand.",
+        spokenSentence: "The children are playing at the beach with their bucket and spades.",
+        sentenceHTML: "The children are playing at the beach with their <span class='blank-slot'>______</span> and spades (铲子).",
+        enOptions: ["bucket", "torch", "cooker", "shelf"],
+        zhOptions: ["桶", "手电筒", "电锅", "架子"]
+      },
+      {
+        id: "46", isGrammar: false, word: "headphones",
+        meta: "Plural Noun 复数名词 | 头戴式耳机",
+        meaning: "耳机",
+        tip: "戴在双耳上听歌曲（listening to songs）的音频设备就是 headphones（耳机）。",
+        enClueSpoken: "A device worn over the ears to listen to music without others hearing.",
+        enClueHTML: "A device worn over the ears (戴在耳朵上) to listen to music.",
+        spokenSentence: "Michelle is listening to songs through her new headphones.",
+        sentenceHTML: "Michelle is listening to songs through her new <span class='blank-slot'>______</span>.",
+        enOptions: ["headphones", "goggles", "tracksuit", "power lines"],
+        zhOptions: ["耳机", "护目镜", "运动服", "电力线"]
+      },
+      {
+        id: "47", isGrammar: false, word: "lifeboat",
+        meta: "Noun 复合名词 | life + boat 救生艇",
+        meaning: "救生艇",
+        tip: "大船（sinking ship）在海上遇险下沉时，专门用来营救水手（sailors）的小艇就是 lifeboat（救生艇）。",
+        enClueSpoken: "A special boat kept on a ship to rescue people if the ship is sinking.",
+        enClueHTML: "A special boat kept on a ship to rescue (营救) people if the ship is sinking.",
+        spokenSentence: "The lifeboat rescued the sailors from the sinking ship.",
+        sentenceHTML: "The <span class='blank-slot'>______</span> rescued (营救) the sailors (水手) from the sinking ship.",
+        enOptions: ["lifeboat", "fire engine", "helicopter", "motorbike"],
+        zhOptions: ["救生艇", "消防车", "直升机", "摩托车"]
+      },
+      {
+        id: "48", isGrammar: false, word: "life jacket",
+        meta: "Noun 复合名词 | 救生衣",
+        meaning: "救生衣",
+        tip: "上船（get on the boat）前必须穿在身上防止溺水的浮力背心就是 life jacket（救生衣）。",
+        enClueSpoken: "A sleeveless jacket filled with air or foam that keeps you floating in water.",
+        enClueHTML: "A jacket that keeps you floating (漂浮) safely in water.",
+        spokenSentence: "Nurul wore a life jacket before she got on the boat.",
+        sentenceHTML: "Nurul wore a <span class='blank-slot'>______</span> before she got on the boat.",
+        enOptions: ["life jacket", "tracksuit", "goggles", "headphones"],
+        zhOptions: ["救生衣", "运动服", "护目镜", "耳机"]
+      },
+
+      // --- #49 - #72 (Part 3) ---
+      {
+        id: "49", isGrammar: false, word: "rescue boat",
+        meta: "Noun 复合名词 | 水灾救援船",
+        meaning: "救生船",
+        tip: "发生大水灾时把受困灾民（flood victims）安全接走的救援船只就是 rescue boat（救生船）。",
+        enClueSpoken: "A boat used by emergency teams to save flood victims from deep water.",
+        enClueHTML: "A boat used by emergency teams to save flood victims (水灾灾民).",
+        spokenSentence: "The flood victims got into the rescue boat.",
+        sentenceHTML: "The flood victims (水灾灾民) got into the <span class='blank-slot'>______</span>.",
+        enOptions: ["rescue boat", "fire engine", "ambulance", "motorbike"],
+        zhOptions: ["救生船", "消防车", "救护车", "摩托车"]
+      },
+      {
+        id: "50", isGrammar: false, word: "space",
+        meta: "Uncountable Noun 不可数名词 | 外太空",
+        meaning: "太空",
+        tip: "地球大气层以外、星星与行星所在的宇宙空间就是 space（太空）。",
+        enClueSpoken: "The area outside Earth's atmosphere where stars and planets exist.",
+        enClueHTML: "The area outside Earth's atmosphere (地球大气层外) where stars exist.",
+        spokenSentence: "The astronaut talked about her experience being in space.",
+        sentenceHTML: "The astronaut talked about her experience (经历) being in <span class='blank-slot'>______</span>.",
+        enOptions: ["space", "tunnel", "base camp", "shelf"],
+        zhOptions: ["太空", "隧道", "(尤指登山队的)大本营", "架子"]
+      },
+      {
+        id: "51", isGrammar: false, word: "astronaut",
+        meta: "Noun 职业名词 | 宇航员",
+        meaning: "宇航员",
+        tip: "乘坐宇宙飞船飞往太空执行任务的太空人就是 astronaut（宇航员）。",
+        enClueSpoken: "A person trained to travel and work in a spacecraft in space.",
+        enClueHTML: "A person trained to travel in a spacecraft (宇宙飞船) in space.",
+        spokenSentence: "Hillary's dream is to become an astronaut.",
+        sentenceHTML: "Hillary's dream is to become an <span class='blank-slot'>______</span>.",
+        enOptions: ["astronaut", "captain", "squirrel", "characters"],
+        zhOptions: ["宇航员", "船长", "松鼠", "人物；角色"]
+      },
+      {
+        id: "52", isGrammar: false, word: "torch",
+        meta: "Noun 名词 | 手电筒",
+        meaning: "手电筒",
+        tip: "童子军（scouts）夜晚在黑暗中步行时用来照明的便携灯具就是 torch（手电筒）。",
+        enClueSpoken: "A small portable battery-powered light you carry in your hand in the dark.",
+        enClueHTML: "A small portable light (便携灯) you carry in your hand in the dark.",
+        spokenSentence: "The scouts used their torch while walking at night.",
+        sentenceHTML: "The scouts (童子军) used their <span class='blank-slot'>______</span> while walking at night.",
+        enOptions: ["torch", "bucket", "alarm", "guitar"],
+        zhOptions: ["手电筒", "桶", "警报器", "吉他"]
+      },
+      {
+        id: "53", isGrammar: false, word: "captain",
+        meta: "Noun 职业名词 | 船长 / 机长",
+        meaning: "船长",
+        tip: "掌管整艘轮船（ship）航行安全与船员的最高指挥官就是 captain（船长）。",
+        enClueSpoken: "The person in charge of a ship or an aircraft.",
+        enClueHTML: "The person in charge of (掌管) a ship or an aircraft.",
+        spokenSentence: "Mr Edward is the captain of the ship.",
+        sentenceHTML: "Mr Edward is the <span class='blank-slot'>______</span> of the ship.",
+        enOptions: ["captain", "astronaut", "police officer", "ambulance driver"],
+        zhOptions: ["船长", "宇航员", "警察", "救护车司机"]
+      },
+      {
+        id: "54", isGrammar: false, word: "accurate",
+        meta: "Adjective 形容词 | 准确无误的",
+        meaning: "准确的",
+        tip: "用温度计（thermometer）测量体温得到精确无误的读数，accurate 意为“准确的”。",
+        enClueSpoken: "Completely correct and exact, with no mistakes.",
+        enClueHTML: "Completely correct and exact (精确的), with no mistakes.",
+        spokenSentence: "Daniel is using the thermometer to get an accurate reading of the temperature.",
+        sentenceHTML: "Daniel is using the thermometer (温度计) to get an <span class='blank-slot'>______</span> reading of the temperature (温度).",
+        enOptions: ["accurate", "dramatic", "terrifying", "worried"],
+        zhOptions: ["准确的", "令人印象深刻的", "很可怕的", "担心的"]
+      },
+      {
+        id: "55", isGrammar: false, word: "dramatic",
+        meta: "Adjective 形容词 | 激动人心的/戏剧性的",
+        meaning: "令人印象深刻的",
+        tip: "记者发表极具感染力、扣人心弦的演讲（dramatic speech），dramatic 意为“令人印象深刻的”。",
+        enClueSpoken: "Exciting, impressive, and full of strong emotion.",
+        enClueHTML: "Exciting, impressive (令人赞叹的), and full of strong emotion.",
+        spokenSentence: "The reporter is known for his dramatic speech.",
+        sentenceHTML: "The reporter (记者) is known for his <span class='blank-slot'>______</span> speech (演讲).",
+        enOptions: ["dramatic", "accurate", "cold", "honest"],
+        zhOptions: ["令人印象深刻的", "准确的", "寒冷的", "诚实的"]
+      },
+      {
+        id: "56", isGrammar: false, word: "bench",
+        meta: "Noun 名词 | 公园长凳",
+        meaning: "长凳",
+        tip: "老夫妇（old couple）并排坐在公园里休息的长条木椅就是 bench（长凳）。",
+        enClueSpoken: "A long seat for two or more people, usually made of wood in a park.",
+        enClueHTML: "A long seat (长座位) for two or more people in a park.",
+        spokenSentence: "The old couple is sitting on a bench at the park.",
+        sentenceHTML: "The old couple (老夫妇) is sitting on a <span class='blank-slot'>______</span> at the park.",
+        enOptions: ["bench", "shelf", "tunnel", "base camp"],
+        zhOptions: ["长凳", "架子", "隧道", "(尤指登山队的)大本营"]
+      },
+      {
+        id: "57", isGrammar: false, word: "frightened",
+        meta: "Adjective (-ed) | 形容人的感受：害怕的",
+        meaning: "害怕的",
+        tip: "小女孩夜晚独自走回家心里感到“害怕的”，形容人的心情要用 -ed 结尾的 frightened。",
+        enClueSpoken: "Feeling afraid or scared of something.",
+        enClueHTML: "Feeling afraid (感到害怕) or scared of something.",
+        spokenSentence: "The girl is frightened of walking home at night.",
+        sentenceHTML: "The girl is <span class='blank-slot'>______</span> of walking home at night.",
+        enOptions: ["frightened", "terrifying", "honest", "accurate"],
+        zhOptions: ["害怕的", "很可怕的", "诚实的", "准确的"]
+      },
+      {
+        id: "58", isGrammar: false, word: "terrifying",
+        meta: "Adjective (-ing) | 形容事物令人恐惧：很可怕的",
+        meaning: "很可怕的",
+        tip: "走进游乐园的鬼屋（haunted house）是一段令人毛骨悚然的经历，形容事物用 -ing 结尾的 terrifying。",
+        enClueSpoken: "Extremely scary and causing great fear.",
+        enClueHTML: "Extremely scary (极其吓人的) and causing great fear.",
+        spokenSentence: "Entering the haunted house at the amusement park was a terrifying experience.",
+        sentenceHTML: "Entering the haunted house (鬼屋) at the amusement park (游乐园) was a <span class='blank-slot'>______</span> experience.",
+        enOptions: ["terrifying", "frightened", "surprised", "honest"],
+        zhOptions: ["很可怕的", "害怕的", "惊讶的；惊喜的", "诚实的"]
+      },
+      {
+        id: "59", isGrammar: false, word: "sinking",
+        meta: "Verb 现在分词 | 原形：sink",
+        meaning: "下沉",
+        tip: "轮船进水后慢慢沉入海底（bottom of the sea），sinking 意为“下沉”。",
+        enClueSpoken: "Going down below the surface of water toward the bottom.",
+        enClueHTML: "Going down below the surface of water (水面以下) toward the bottom.",
+        spokenSentence: "The ship is sinking to the bottom of the sea.",
+        sentenceHTML: "The ship is <span class='blank-slot'>______</span> to the bottom (底部) of the sea.",
+        enOptions: ["sinking", "whisper", "escaped", "hugged"],
+        zhOptions: ["下沉", "小声说话", "逃脱", "拥抱"]
+      },
+      {
+        id: "60", isGrammar: false, word: "whisper",
+        meta: "Verb 动词 | 轻声耳语",
+        meaning: "小声说话",
+        tip: "在储藏室（storeroom）里听到有人压低嗓音轻轻呼唤她的名字，whisper 意为“小声说话”。",
+        enClueSpoken: "To speak very quietly using your breath so only someone close can hear.",
+        enClueHTML: "To speak very quietly (非常轻声地说话) so only someone close can hear.",
+        spokenSentence: "Sally heard someone whisper her name when she was in the storeroom.",
+        sentenceHTML: "Sally heard someone <span class='blank-slot'>______</span> her name when she was in the storeroom (储藏室).",
+        enOptions: ["whisper", "screamed", "angrily", "sinking"],
+        zhOptions: ["小声说话", "尖叫", "生气地", "下沉"]
+      },
+      {
+        id: "61", isGrammar: false, word: "worried",
+        meta: "Adjective (-ed) | 形容人感到担忧：担心的",
+        meaning: "担心的",
+        tip: "儿子放学还没回家，陈太太感到非常焦虑不安，worried 意为“担心的”。",
+        enClueSpoken: "Feeling anxious or troubled because you think something bad might happen.",
+        enClueHTML: "Feeling anxious (焦虑的) because you think something bad might happen.",
+        spokenSentence: "Mrs Cheng was very worried because her son was not back from school.",
+        sentenceHTML: "Mrs Cheng was very <span class='blank-slot'>______</span> because her son was not back from school.",
+        enOptions: ["worried", "surprised", "honest", "terrifying"],
+        zhOptions: ["担心的", "惊讶的；惊喜的", "诚实的", "很可怕的"]
+      },
+      {
+        id: "62", isGrammar: false, word: "cold",
+        meta: "Adjective 形容词 | 寒冷的",
+        meaning: "寒冷的",
+        tip: "觉得身体发冷需要盖毛毯（blanket），cold 意为“寒冷的”。",
+        enClueSpoken: "Having a low temperature; feeling chilly and needing a blanket.",
+        enClueHTML: "Having a low temperature (低温); feeling chilly and needing a blanket.",
+        spokenSentence: "I'm feeling cold. Could you please get me the blanket? asked Nurjan.",
+        sentenceHTML: "'I'm feeling <span class='blank-slot'>______</span>. Could you please get me the blanket (毛毯)?' asked Nurjan.",
+        enOptions: ["cold", "honest", "accurate", "dramatic"],
+        zhOptions: ["寒冷的", "诚实的", "准确的", "令人印象深刻的"]
+      },
+      {
+        id: "63", isGrammar: false, word: "surprised",
+        meta: "Adjective (-ed) | 惊讶的；惊喜的",
+        meaning: "惊讶的；惊喜的",
+        tip: "收到大家送的意外礼物（present）时感到又惊又喜，surprised 意为“惊讶的；惊喜的”。",
+        enClueSpoken: "Feeling sudden wonder or amazement at something unexpected.",
+        enClueHTML: "Feeling sudden wonder (惊奇) at something unexpected.",
+        spokenSentence: "Riza was surprised when we gave her the present.",
+        sentenceHTML: "Riza was <span class='blank-slot'>______</span> when we gave her the present (礼物).",
+        enOptions: ["surprised", "worried", "frightened", "cold"],
+        zhOptions: ["惊讶的；惊喜的", "担心的", "害怕的", "寒冷的"]
+      },
+      {
+        id: "64", isGrammar: false, word: "base camp",
+        meta: "Noun 复合名词 | 登山队大本营",
+        meaning: "(尤指登山队的)大本营",
+        tip: "登山者（hikers）在山脚扎营准备出发攀登的营地就是 base camp（大本营）。",
+        enClueSpoken: "The main camp from which mountain climbers or hikers start their climb.",
+        enClueHTML: "The main camp (主营地) from which hikers start their climb.",
+        spokenSentence: "The hikers at the base camp are preparing for their hike later.",
+        sentenceHTML: "The hikers (登山徒步者) at the <span class='blank-slot'>______</span> are preparing for their hike later.",
+        enOptions: ["base camp", "Times Square", "tunnel", "shelf"],
+        zhOptions: ["(尤指登山队的)大本营", "时代广场", "隧道", "架子"]
+      },
+      {
+        id: "65", isGrammar: false, word: "motorbike",
+        meta: "Noun 交通工具 | 摩托车",
+        meaning: "摩托车",
+        tip: "每天骑着两个轮子的机动车辆去上班（by motorbike），motorbike 意为“摩托车”。",
+        enClueSpoken: "A two-wheeled vehicle powered by an engine.",
+        enClueHTML: "A two-wheeled vehicle (两轮机动车) powered by an engine.",
+        spokenSentence: "Mohan's father goes to work by motorbike every day.",
+        sentenceHTML: "Mohan's father goes to work by <span class='blank-slot'>______</span> every day.",
+        enOptions: ["motorbike", "helicopter", "rescue boat", "lifeboat"],
+        zhOptions: ["摩托车", "直升机", "救生船", "救生艇"]
+      },
+      {
+        id: "66", isGrammar: false, word: "helicopter",
+        meta: "Noun 飞行器 | 直升机",
+        meaning: "直升机",
+        tip: "头顶有大型螺旋桨、可以垂直起降的飞行器就是 helicopter（直升机）。",
+        enClueSpoken: "An aircraft with large spinning blades on top that can fly straight up.",
+        enClueHTML: "An aircraft with large spinning blades (旋转螺旋桨) on top.",
+        spokenSentence: "Kiran wishes to fly in a helicopter one day.",
+        sentenceHTML: "Kiran wishes to fly in a <span class='blank-slot'>______</span> one day.",
+        enOptions: ["helicopter", "motorbike", "rescue boat", "fire engine"],
+        zhOptions: ["直升机", "摩托车", "救生船", "消防车"]
+      },
+      {
+        id: "67", isGrammar: false, word: "characters",
+        meta: "Plural Noun 复数名词 | 单数：character",
+        meaning: "人物；角色",
+        tip: "画家正在绘制可爱的卡通角色（cartoon characters），characters 意为“人物；角色”。",
+        enClueSpoken: "People or animals in a story, cartoon, or movie.",
+        enClueHTML: "People or animals in a story, cartoon (卡通), or movie.",
+        spokenSentence: "The artist is drawing cute cartoon characters.",
+        sentenceHTML: "The artist (画家) is drawing cute cartoon <span class='blank-slot'>______</span>.",
+        enOptions: ["characters", "astronaut", "squirrel", "captain"],
+        zhOptions: ["人物；角色", "宇航员", "松鼠", "船长"]
+      },
+      {
+        id: "68", isGrammar: false, word: "honest",
+        meta: "Adjective 形容词 | 首字母 h 不发音",
+        meaning: "诚实的",
+        tip: "从不说谎、拾金不昧的好孩子就是 honest（诚实的；注意首字母 h 不发音）。",
+        enClueSpoken: "Always telling the truth and never cheating or stealing.",
+        enClueHTML: "Always telling the truth (说真话) and never cheating.",
+        spokenSentence: "Ali is an honest boy.",
+        sentenceHTML: "Ali is an <span class='blank-slot'>______</span> boy.",
+        enOptions: ["honest", "frightened", "worried", "cold"],
+        zhOptions: ["诚实的", "害怕的", "担心的", "寒冷的"]
+      },
+      {
+        id: "69", isGrammar: false, word: "angrily",
+        meta: "Adverb 副词 | 形容词：angry",
+        meaning: "生气地",
+        tip: "老师对着调皮捣蛋的男孩大声发火训斥（shouted angrily），angrily 意为“生气地”。",
+        enClueSpoken: "In an angry way, showing strong displeasure.",
+        enClueHTML: "In an angry way (以愤怒的方式), showing strong displeasure.",
+        spokenSentence: "My teacher shouted angrily at the naughty boys.",
+        sentenceHTML: "My teacher shouted <span class='blank-slot'>______</span> at the naughty (调皮的) boys.",
+        enOptions: ["angrily", "whisper", "hugged", "escaped"],
+        zhOptions: ["生气地", "小声说话", "拥抱", "逃脱"]
+      },
+      {
+        id: "70", isGrammar: false, word: "lesson",
+        meta: "Noun 名词 | 吸取教训：teach someone a lesson",
+        meaning: "教训",
+        tip: "那次意外事件让我学到了永远不会忘记的深刻“教训”（lesson）。",
+        enClueSpoken: "Something you learn from an experience or mistake so you do not repeat it.",
+        enClueHTML: "Something you learn from a mistake (错误) so you do not repeat it.",
+        spokenSentence: "That incident taught me a lesson that I will never forget.",
+        sentenceHTML: "That incident (事件) taught me a <span class='blank-slot'>______</span> that I will never forget.",
+        enOptions: ["lesson", "accident", "break", "bench"],
+        zhOptions: ["教训", "意外", "摔断；骨折", "长凳"]
+      },
+      {
+        id: "71", isGrammar: false, word: "shelf",
+        meta: "Noun 名词 | 复数：shelves",
+        meaning: "架子",
+        tip: "摆放书本和瓶子的书架/置物架就是 shelf（架子）。",
+        enClueSpoken: "A flat board attached to a wall or inside a cupboard for holding things.",
+        enClueHTML: "A flat board (平板) inside a cupboard or wall for holding things.",
+        spokenSentence: "The bottle that I wanted is on the shelf.",
+        sentenceHTML: "The bottle (瓶子) that I wanted is on the <span class='blank-slot'>______</span>.",
+        enOptions: ["shelf", "bench", "tunnel", "panel"],
+        zhOptions: ["架子", "长凳", "隧道", "栏"]
+      },
+      {
+        id: "72", isGrammar: false, word: "hugged",
+        meta: "Verb 过去式 | 原形：hug (双写 g 加 -ed)",
+        meaning: "拥抱",
+        tip: "好朋友见面时紧紧地互相“拥抱”（hugged tightly），hugged 是 hug 的过去式。",
+        enClueSpoken: "Put your arms around someone tightly to show love or friendship.",
+        enClueHTML: "Put your arms around someone tightly (紧紧地抱住) to show friendship.",
+        spokenSentence: "Ai Ling hugged her friend tightly when they met.",
+        sentenceHTML: "Ai Ling <span class='blank-slot'>______</span> her friend tightly (紧紧地) when they met.",
+        enOptions: ["hugged", "escaped", "screamed", "hit"],
+        zhOptions: ["拥抱", "逃脱", "尖叫", "袭击；发生"]
+      }
+    ];
+
+    // =========================================================================
+    // 2. Unit Focus 三大语法闪卡与练习题 (Textbook pp. 12–13)
+    // =========================================================================
+    const UNIT1_GRAMMAR = [
+      {
+        id: "G1", isGrammar: true,
+        word: "Nouns and Verbs (Same Word)",
+        meta: "Grammar 1 (p.12) | visit / cook / answer 可作名词也可作动词",
+        meaning: "名动同形词（同一个词既可当名词，也可当动词）",
+        tip: "课本第12页重点！① a visit (名词：一次探访) vs will visit (动词：将探访)；② an excellent cook (名词：出色的厨师) vs will cook (动词：将烹饪)；③ the correct answer (名词：正确答案) vs to answer (动词：回答)。",
+        enClueSpoken: "Clare is an excellent cook. Here, what part of speech is the word cook?",
+        enClueHTML: "Clare is an excellent (出色的) <strong>cook</strong>. Here, 'cook' names a person, so it is a ______.",
+        spokenSentence: "Clare is an excellent cook. Lisa and her sister will cook dinner tonight.",
+        sentenceHTML: "Clare is an excellent <span class='blank-slot'>______</span> (名词：厨师). Lisa and her sister will cook dinner.",
+        enOptions: ["cook", "cooker", "cooking", "cooked"],
+        zhOptions: ["厨师（名词 noun；注意 cooker 是电锅）", "电锅（厨具物品）", "正在煮（现在分词）", "煮过（过去式）"]
+      },
+      {
+        id: "G2", isGrammar: true,
+        word: "Past Continuous + when + Past Simple",
+        meta: "Grammar 2 (p.12) | 过去进行时 + when + 一般过去时（动作被打断）",
+        meaning: "过去正在做某事时，突然被另一件事打断（用 when 连接）",
+        tip: "课本第12页原句结构：长动作正在进行用 Past Continuous (was/were + -ing)，突然发生的短动作打断它用 when + Past Simple！例如：Helen was reading a storybook last night when the lights went out.",
+        enClueSpoken: "Used to join an ongoing past action that was interrupted by a sudden past event.",
+        enClueHTML: "Helen <strong>was reading</strong> a storybook last night ______ the lights <strong>went out</strong>.",
+        spokenSentence: "Helen was reading a storybook last night when the lights went out.",
+        sentenceHTML: "Helen was reading a storybook last night <span class='blank-slot'>______</span> the lights went out (熄灭).",
+        enOptions: ["when", "while", "because", "before"],
+        zhOptions: ["当……的时候（后接一般过去时 went out，表示突然打断）", "正当……期间（后接过去进行时 was/were -ing）", "因为（表示原因）", "在……之前"]
+      },
+      {
+        id: "G3", isGrammar: true,
+        word: "Past Simple + while + Past Continuous",
+        meta: "Grammar 3 (p.13) | 一般过去时 + while + 过去进行时",
+        meaning: "正当某动作正在持续进行期间，发生了另一件事（用 while 连接）",
+        tip: "课本第13页原句结构：while 后面通常紧接持续进行的动作（Past Continuous: was/were + -ing）！例如：My friend called while I was cleaning my room yesterday afternoon.",
+        enClueSpoken: "Used before a continuous past action happening in the background.",
+        enClueHTML: "My friend <strong>called</strong> ______ I <strong>was cleaning</strong> my room yesterday afternoon.",
+        spokenSentence: "My friend called while I was cleaning my room yesterday afternoon.",
+        sentenceHTML: "My friend called (打电话来) <span class='blank-slot'>______</span> I was cleaning my room yesterday afternoon.",
+        enOptions: ["while", "when", "until", "so"],
+        zhOptions: ["正当……期间（后接过去进行时 was cleaning）", "当……时刻（通常后接一般过去时）", "直到……为止", "所以"]
+      },
+      {
+        id: "G4", isGrammar: true,
+        word: "Sequence of Tenses: was doing ... when ... came",
+        meta: "Grammar 4 (p.12) | Nabilah was doing her homework when a visitor came.",
+        meaning: "过去进行时 (was doing) 搭配一般过去时 (came)",
+        tip: "课本第12页第4(a)例句：Nabilah 当时“正在做功课”(was doing her homework)，这时一位访客“来了”(came)。长动作用 was/were + -ing，短动作用过去式！",
+        enClueSpoken: "Nabilah was doing her homework when a visitor came to her house.",
+        enClueHTML: "Nabilah ______ her homework when a visitor (访客) came to her house.",
+        spokenSentence: "Nabilah was doing her homework when a visitor came to her house.",
+        sentenceHTML: "Nabilah <span class='blank-slot'>______</span> her homework when a visitor (访客) came to her house.",
+        enOptions: ["was doing", "did", "does", "is doing"],
+        zhOptions: ["当时正在做（过去进行时，表示访客来时她正在写作业）", "做了（一般过去时，无法体现“正在进行”）", "做（一般现在时）", "现在正在做（现在进行时）"]
+      },
+      {
+        id: "G5", isGrammar: true,
+        word: "Adjectives ending with '-ing'",
+        meta: "Grammar 5 (p.13) | frightening / exciting / worrying / annoying",
+        meaning: "以 -ing 结尾的形容词（形容事物、事件或经历令人产生某种情绪）",
+        tip: "课本第13页重点！形容“事物、天气、游戏或经历”本身的性质，用 -ing 结尾：The loud thunder was frightening (雷声很吓人). / The roller coaster ride was exciting (过山车很刺激).",
+        enClueSpoken: "Adjectives ending in -ing describe an object, event, or experience that causes emotions.",
+        enClueHTML: "The loud thunder (响亮的雷声) was ______. (Describing the thunder)",
+        spokenSentence: "The loud thunder was frightening.",
+        sentenceHTML: "The loud thunder (响亮的雷声) was <span class='blank-slot'>______</span>.",
+        enOptions: ["frightening", "frightened", "worried", "annoyed"],
+        zhOptions: ["令人害怕的（-ing 形容“雷声”这个事物令人恐惧）", "感到害怕的（-ed 只能形容“人”的心情）", "感到担心的（-ed 形容人的心情）", "感到生气的（-ed 形容人的心情）"]
+      },
+      {
+        id: "G6", isGrammar: true,
+        word: "Adjectives ending with '-ed'",
+        meta: "Grammar 6 (p.13) | frightened / excited / worried / annoyed",
+        meaning: "以 -ed 结尾的形容词（形容“人”内心的情绪感受或状态）",
+        tip: "课本第13页重点！形容“人”感到害怕、兴奋、担心或生气，用 -ed 结尾：Mother was worried when I came home late (妈妈很担心). / Li Ying was annoyed by the loud noise (丽颖感到很烦躁).",
+        enClueSpoken: "Adjectives ending in -ed describe a person's emotion or feeling.",
+        enClueHTML: "Li Ying was ______ by the loud noise (噪音). (Describing Li Ying's feeling)",
+        spokenSentence: "Li Ying was annoyed by the loud noise.",
+        sentenceHTML: "Li Ying was <span class='blank-slot'>______</span> by the loud noise (噪音).",
+        enOptions: ["annoyed", "annoying", "frightening", "exciting"],
+        zhOptions: ["感到生气的/烦躁的（-ed 形容“人 Li Ying”的内心感受）", "令人烦躁的（-ing 只能形容事物或噪音）", "令人害怕的（-ing 形容事物）", "令人兴奋的（-ing 形容事物）"]
+      }
+    ];
+
+    // 额外 2 道课本第 12–13 页原句语法题，使 Grammar 专题练习更饱满
+    const EXTRA_GRAMMAR_PRACTICE = [
+      {
+        id: "G7", isGrammar: true,
+        word: "The roller coaster ride was exciting.",
+        meta: "Grammar 7 (p.13) | exciting (-ing) vs excited (-ed)",
+        meaning: "令人兴奋的/刺激的（形容过山车体验）",
+        tip: "课本第13页原句！主语是 The roller coaster ride（过山车体验，属于事物），所以必须用 -ing 结尾的 exciting！",
+        enClueSpoken: "The roller coaster ride was exciting.",
+        enClueHTML: "The roller coaster ride (过山车体验) was ______.",
+        spokenSentence: "The roller coaster ride was exciting.",
+        sentenceHTML: "The roller coaster ride (过山车体验) was <span class='blank-slot'>______</span>.",
+        enOptions: ["exciting", "excited", "worried", "frightened"],
+        zhOptions: ["令人兴奋的/刺激的（-ing 形容过山车这项活动）", "感到兴奋的（-ed 只能形容人的感受）", "感到担心的（-ed 形容人）", "感到害怕的（-ed 形容人）"]
+      },
+      {
+        id: "G8", isGrammar: true,
+        word: "Mother was worried when I came home late.",
+        meta: "Grammar 8 (p.13) | worried (-ed) vs worrying (-ing)",
+        meaning: "感到担心的（形容妈妈的心情）",
+        tip: "课本第13页原句！主语是 Mother（妈妈，属于人），形容妈妈内心的担忧情绪，必须用 -ed 结尾的 worried！",
+        enClueSpoken: "Mother was worried when I came home late last night.",
+        enClueHTML: "Mother was ______ when I came home late last night.",
+        spokenSentence: "Mother was worried when I came home late last night.",
+        sentenceHTML: "Mother was <span class='blank-slot'>______</span> when I came home late last night.",
+        enOptions: ["worried", "worrying", "annoying", "terrifying"],
+        zhOptions: ["感到担心的（-ed 形容“妈妈”的心情）", "令人担忧的（-ing 形容事情）", "令人烦躁的（-ing 形容事物）", "很可怕的（-ing 形容事物）"]
+      }
+    ];
+
+    // =========================================================================
+    // 3. 全局状态管理
+    // =========================================================================
+    let studentName = "";
+    let studentClass = "6M";
+    let currentModuleKey = "part1";
+
+    let activeFlashcards = [];
+    let currentCardIdx = 0;
+    let learnedCardsSet = new Set();
+    let cardLockTimer = null;
+    let cardWaitSeconds = 5;
+
+    let currentStageNum = 1; // 1 = 生字音义配对关, 2 = 句子填空 + Grammar关
+    let activeQuizList = [];
+    let currentQuizIdx = 0;
+    let currentStep = 1; // 1 = 选英文字, 2 = 选华语意思
+    let step1WasCorrect = false;
+    let step1SelectedText = "";
+
+    let isReadingSentence = false;
+    let speechFallbackTimer = null;
+    let quizCountdownTimer = null;
+    let quizSecondsLeft = 20;
+
+    let stage1Right = 0;
+    let totalRight = 0;
+    let totalWrong = 0;
+    let reviewLog = [];
+
+    // =========================================================================
+    // 4. Web Audio API 背景音乐 + 倒计时最后 6 秒紧张变奏音效
+    // =========================================================================
+    let audioCtx = null;
+    let bgmOn = true;
+    let bgmTension = false;
+    let bgmTimer = null;
+    let melodyPos = 0;
+
+    const CALM_NOTES = [523.25, 659.25, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 659.25, 783.99, 1046.50, 783.99, 587.33, 493.88, 523.25, 0];
+    const TENSION_NOTES = [440.00, 466.16, 440.00, 466.16, 523.25, 554.37, 523.25, 554.37];
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AC();
+      }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleBGM() {
+      initAudio();
+      bgmOn = !bgmOn;
+      const btn = document.getElementById("bgmBtn");
+      const icon = document.getElementById("bgmIcon");
+      const txt = document.getElementById("bgmText");
+
+      if (bgmOn) {
+        icon.textContent = "🎵";
+        txt.textContent = "背景音乐开";
+        btn.classList.replace("bg-gray-200", "bg-amber-100");
+        runBGMLoop();
+      } else {
+        icon.textContent = "🔇";
+        txt.textContent = "背景音乐关";
+        btn.classList.replace("bg-amber-100", "bg-gray-200");
+        clearTimeout(bgmTimer);
+      }
+    }
+
+    function setBGMTension(isUrgent) {
+      if (bgmTension === isUrgent) return;
+      bgmTension = isUrgent;
+      melodyPos = 0;
+      if (bgmOn) {
+        clearTimeout(bgmTimer);
+        runBGMLoop();
+      }
+    }
+
+    function runBGMLoop() {
+      if (!bgmOn) return;
+      try {
+        initAudio();
+        const scale = bgmTension ? TENSION_NOTES : CALM_NOTES;
+        const freq = scale[melodyPos % scale.length];
+        melodyPos++;
+        const interval = bgmTension ? 140 : 340;
+
+        if (freq > 0) {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = bgmTension ? "sawtooth" : "triangle";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          const baseVol = isReadingSentence ? 0.014 : (bgmTension ? 0.056 : 0.036);
+          gain.gain.setValueAtTime(baseVol, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (interval / 1000) * 0.88);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + (interval / 1000) * 0.9);
+        }
+        bgmTimer = setTimeout(runBGMLoop, interval);
+      } catch (e) {}
+    }
+
+    function playFeedbackTone(kind) {
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (kind === "step_ok") {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(587.33, now);
+          osc.frequency.setValueAtTime(783.99, now + 0.08);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        } else if (kind === "all_ok" || kind === "unlock") {
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.08);
+          osc.frequency.setValueAtTime(783.99, now + 0.16);
+          osc.frequency.setValueAtTime(1046.50, now + 0.24);
+          gain.gain.setValueAtTime(0.16, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.48);
+          osc.start(now);
+          osc.stop(now + 0.48);
+        } else if (kind === "wrong") {
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(210, now);
+          osc.frequency.linearRampToValueAtTime(135, now + 0.34);
+          gain.gain.setValueAtTime(0.14, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.36);
+          osc.start(now);
+          osc.stop(now + 0.36);
+        }
+      } catch (e) {}
+    }
+
+    // =========================================================================
+    // 5. Web Speech API 英文朗读引擎 (支持语速调节与句末回调)
+    // =========================================================================
+    function getSelectedRate() {
+      const sel = document.getElementById("speechRateSelect");
+      return sel ? parseFloat(sel.value) : 0.85;
+    }
+
+    function speakEnglishText(text, onFinishCallback) {
+      if (!("speechSynthesis" in window)) {
+        if (onFinishCallback) setTimeout(onFinishCallback, 1200);
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-GB";
+      utter.rate = getSelectedRate();
+      utter.pitch = 1.02;
+
+      let finished = false;
+      const done = () => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(speechFallbackTimer);
+        if (onFinishCallback) onFinishCallback();
+      };
+
+      utter.onend = done;
+      utter.onerror = done;
+
+      const estimatedMs = Math.max(2200, Math.min(8800, (text.length * 85) / getSelectedRate() + 1200));
+      speechFallbackTimer = setTimeout(done, estimatedMs);
+
+      window.speechSynthesis.speak(utter);
+    }
+
+    function speakCurrentFlashcard() {
+      const item = activeFlashcards[currentCardIdx];
+      if (!item) return;
+      const cleanTerm = item.word.replace(/\(.*?\)/g, "").trim();
+      speakEnglishText(cleanTerm);
+    }
+
+    function speakCurrentFlashcardSentence() {
+      const item = activeFlashcards[currentCardIdx];
+      if (!item) return;
+      speakEnglishText(item.spokenSentence);
+    }
+
+    // =========================================================================
+    // 6. 工具函数与模块启动控制
+    // =========================================================================
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function formatChineseParentheses(htmlStr) {
+      return htmlStr.replace(/\(([^()]+)\)/g, `<span class="hint-cn">($1)</span>`);
+    }
+
+    function startModule(modKey) {
+      currentModuleKey = modKey;
+      const rawName = document.getElementById("studentNameInput").value.trim();
+      studentName = rawName || "六年级小勇士";
+      studentClass = document.getElementById("studentClassInput").value;
+
+      if (modKey === "part1") {
+        activeFlashcards = UNIT1_VOCAB.slice(0, 24);
+      } else if (modKey === "part2") {
+        activeFlashcards = UNIT1_VOCAB.slice(24, 48);
+      } else if (modKey === "part3") {
+        activeFlashcards = UNIT1_VOCAB.slice(48, 72);
+      } else if (modKey === "grammar") {
+        activeFlashcards = [...UNIT1_GRAMMAR];
+      } else {
+        activeFlashcards = [...UNIT1_VOCAB, ...UNIT1_GRAMMAR];
+      }
+
+      initAudio();
+      if (bgmOn) {
+        clearTimeout(bgmTimer);
+        runBGMLoop();
+      }
+
+      currentCardIdx = 0;
+      learnedCardsSet.clear();
+      currentStageNum = 1;
+      stage1Right = 0;
+      totalRight = 0;
+      totalWrong = 0;
+      reviewLog = [];
+
+      document.getElementById("scoreRight").textContent = "0";
+      document.getElementById("scoreWrong").textContent = "0";
+
+      document.getElementById("menuScreen").classList.add("hidden");
+      document.getElementById("stageTransitionModal").classList.add("hidden");
+      document.getElementById("summaryModal").classList.add("hidden");
+      document.getElementById("gameWorkspace").classList.remove("hidden");
+      document.getElementById("homeBtn").classList.remove("hidden");
+
+      // 严格锁定右侧测验区
+      const lockCover = document.getElementById("quizLockCover");
+      lockCover.classList.remove("hidden", "opacity-0", "pointer-events-none");
+      document.getElementById("lockTotalCardsText").textContent = activeFlashcards.length;
+      document.getElementById("fcUnlockedHint").classList.add("hidden");
+
+      updateFlashcardProgressUI();
+      renderFlashcard(0);
+    }
+
+    function returnToMenu() {
+      clearInterval(cardLockTimer);
+      clearInterval(quizCountdownTimer);
+      clearTimeout(speechFallbackTimer);
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      setBGMTension(false);
+      document.getElementById("gameWorkspace").classList.add("hidden");
+      document.getElementById("stageTransitionModal").classList.add("hidden");
+      document.getElementById("summaryModal").classList.add("hidden");
+      document.getElementById("homeBtn").classList.add("hidden");
+      document.getElementById("menuScreen").classList.remove("hidden");
+    }
+
+    // =========================================================================
+    // 7. 左侧 Flashcard 逻辑 (每张强制 5 秒学习)
+    // =========================================================================
+    function renderFlashcard(idx) {
+      const item = activeFlashcards[idx];
+      const total = activeFlashcards.length;
+
+      document.getElementById("fcCounterBadge").textContent = `${idx + 1} / ${total}`;
+      document.getElementById("fcNumTag").textContent = `#${item.id}`;
+      document.getElementById("fcMainTerm").textContent = item.word;
+      document.getElementById("fcChineseMeaning").textContent = item.meaning;
+      document.getElementById("fcMemoryTip").textContent = item.tip;
+
+      const cardBox = document.getElementById("flashcardCard");
+      const typeTag = document.getElementById("fcTypeTag");
+      const tipHeader = document.getElementById("fcTipHeader");
+
+      if (item.isGrammar) {
+        cardBox.classList.add("is-grammar");
+        typeTag.textContent = "🧠 Unit Focus 语法卡";
+        typeTag.className = "bg-purple-600 text-white text-xs font-black px-2.5 py-1 rounded-lg";
+        tipHeader.textContent = "语法规则解析 (Grammar Rule)：";
+      } else {
+        cardBox.classList.remove("is-grammar");
+        typeTag.textContent = "📖 Vocabulary 词汇";
+        typeTag.className = "bg-white/90 border border-amber-300 text-amber-900 text-xs font-extrabold px-2.5 py-1 rounded-lg";
+        tipHeader.textContent = "记忆小妙招 (Memory Tip)：";
+      }
+
+      const metaBox = document.getElementById("fcMetaInfo");
+      if (item.meta) {
+        metaBox.textContent = item.meta;
+        metaBox.classList.remove("hidden");
+      } else {
+        metaBox.classList.add("hidden");
+      }
+
+      const answerHighlight = item.isGrammar ? item.enOptions[0] : item.word;
+      const completedSentence = item.sentenceHTML.replace(
+        "<span class='blank-slot'>______</span>",
+        `<span class="text-sky-700 underline decoration-wavy font-black px-1">${answerHighlight}</span>`
+      );
+      document.getElementById("fcSentence").innerHTML = formatChineseParentheses(completedSentence);
+
+      speakCurrentFlashcard();
+      document.getElementById("fcPrevBtn").disabled = (idx === 0);
+
+      // 5 秒强制学习倒计时
+      clearInterval(cardLockTimer);
+      const nextBtn = document.getElementById("fcNextBtn");
+      const nextLabel = document.getElementById("fcNextLabel");
+
+      if (learnedCardsSet.has(idx)) {
+        nextBtn.disabled = false;
+        nextLabel.textContent = (idx === total - 1) ? "✅ 全部看完！解锁右边测验" : "下一张 ➡️";
+      } else {
+        cardWaitSeconds = 5;
+        nextBtn.disabled = true;
+        nextLabel.textContent = `⏳ 认真记忆中 (${cardWaitSeconds}s)`;
+
+        cardLockTimer = setInterval(() => {
+          cardWaitSeconds--;
+          nextLabel.textContent = `⏳ 认真记忆中 (${cardWaitSeconds}s)`;
+          if (cardWaitSeconds <= 0) {
+            clearInterval(cardLockTimer);
+            learnedCardsSet.add(idx);
+            updateFlashcardProgressUI();
+            nextBtn.disabled = false;
+            nextLabel.textContent = (idx === total - 1) ? "✅ 全部看完！解锁右边测验" : "下一张 ➡️";
+          }
+        }, 1000);
+      }
+    }
+
+    function prevFlashcard() {
+      if (currentCardIdx > 0) {
+        currentCardIdx--;
+        renderFlashcard(currentCardIdx);
+      }
+    }
+
+    function nextFlashcard() {
+      if (!learnedCardsSet.has(currentCardIdx)) return;
+      if (currentCardIdx < activeFlashcards.length - 1) {
+        currentCardIdx++;
+        renderFlashcard(currentCardIdx);
+      } else {
+        unlockRightQuizAndStartStage1();
+      }
+    }
+
+    function updateFlashcardProgressUI() {
+      const done = learnedCardsSet.size;
+      const total = activeFlashcards.length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("fcProgressBar").style.width = `${pct}%`;
+      document.getElementById("lockProgressText").textContent = `${done} / ${total}`;
+    }
+
+    function unlockRightQuizAndStartStage1() {
+      const cover = document.getElementById("quizLockCover");
+      if (!cover.classList.contains("hidden")) {
+        playFeedbackTone("unlock");
+        cover.classList.add("opacity-0", "pointer-events-none");
+        setTimeout(() => cover.classList.add("hidden"), 350);
+        document.getElementById("fcUnlockedHint").classList.remove("hidden");
+        startStage1();
+      }
+    }
+
+    // =========================================================================
+    // 8. 右侧 Quiz 两阶段逻辑
+    //    Stage 1: 根据英文意思选英文字 -> 再选华语意思
+    //    Stage 2: 填充英文字在英文句子里 -> 无论对错都选出华语意思 (含 Grammar)
+    // =========================================================================
+    function startStage1() {
+      currentStageNum = 1;
+      const vocabOnly = activeFlashcards.filter(item => !item.isGrammar);
+      // 若学生只选了语法专题，则用语法题进入 Stage 1 概念识别
+      activeQuizList = shuffleArray(vocabOnly.length > 0 ? vocabOnly : activeFlashcards);
+      currentQuizIdx = 0;
+
+      const badge = document.getElementById("stageBadge");
+      badge.textContent = `Stage 1 • 生字音义配对 (${activeQuizList.length}题)`;
+      badge.className = "bg-sky-600 text-white text-xs font-black px-3 py-1.5 rounded-xl";
+
+      loadQuizQuestion(0);
+    }
+
+    function startStage2() {
+      document.getElementById("stageTransitionModal").classList.add("hidden");
+      currentStageNum = 2;
+
+      let stage2Pool = [...activeFlashcards];
+      // 如果选择的是单个词汇分组，也加入 3 道 Grammar 题目，确保每次练习都有 Grammar 巩固！
+      if (currentModuleKey === "part1") {
+        stage2Pool = [...stage2Pool, UNIT1_GRAMMAR[0], UNIT1_GRAMMAR[1], UNIT1_GRAMMAR[4]];
+      } else if (currentModuleKey === "part2") {
+        stage2Pool = [...stage2Pool, UNIT1_GRAMMAR[2], UNIT1_GRAMMAR[3], UNIT1_GRAMMAR[5]];
+      } else if (currentModuleKey === "part3") {
+        stage2Pool = [...stage2Pool, UNIT1_GRAMMAR[4], UNIT1_GRAMMAR[5], EXTRA_GRAMMAR_PRACTICE[0]];
+      } else if (currentModuleKey === "grammar" || currentModuleKey === "all") {
+        stage2Pool = [...stage2Pool, ...EXTRA_GRAMMAR_PRACTICE];
+      }
+
+      activeQuizList = shuffleArray(stage2Pool);
+      currentQuizIdx = 0;
+
+      const badge = document.getElementById("stageBadge");
+      badge.textContent = `Stage 2 • 句子填空 + Grammar (${activeQuizList.length}题)`;
+      badge.className = "bg-purple-600 text-white text-xs font-black px-3 py-1.5 rounded-xl";
+
+      loadQuizQuestion(0);
+    }
+
+    function loadQuizQuestion(qIdx) {
+      clearInterval(quizCountdownTimer);
+      clearTimeout(speechFallbackTimer);
+      setBGMTension(false);
+      document.getElementById("quizPanel").classList.remove("tension-border");
+
+      const item = activeQuizList[qIdx];
+      currentStep = 1;
+      step1WasCorrect = false;
+      step1SelectedText = "";
+      isReadingSentence = true;
+
+      document.getElementById("qNumDisplay").textContent = qIdx + 1;
+      document.getElementById("qTotalDisplay").textContent = activeQuizList.length;
+
+      const pill1 = document.getElementById("pillStep1");
+      const pill2 = document.getElementById("pillStep2");
+      const qBox = document.getElementById("quizQuestionBox");
+      const helperNote = document.getElementById("promptHelperNote");
+
+      if (currentStageNum === 1) {
+        pill1.className = "px-3.5 py-1 rounded-full text-xs font-black bg-sky-600 text-white shadow-sm";
+        pill1.textContent = "1️⃣ 根据英文意思选出英文字";
+        pill2.className = "px-3.5 py-1 rounded-full text-xs font-black bg-gray-200 text-gray-500";
+        pill2.textContent = "2️⃣ 选出该英文字的华语意思";
+
+        helperNote.textContent = "💡 英文意思线索（括弧为难词华语提示）：";
+        qBox.innerHTML = `<span class="text-sky-900">“${formatChineseParentheses(item.enClueHTML)}”</span>`;
+      } else {
+        pill1.className = "px-3.5 py-1 rounded-full text-xs font-black bg-purple-600 text-white shadow-sm";
+        pill1.textContent = item.isGrammar ? "1️⃣ 选正确语法填入句子" : "1️⃣ 选正确英文字填入句子";
+        pill2.className = "px-3.5 py-1 rounded-full text-xs font-black bg-gray-200 text-gray-500";
+        pill2.textContent = "2️⃣ 无论对错，都要选出华语意思";
+
+        helperNote.textContent = item.isGrammar
+          ? "🧠 Unit Focus 语法实战（括弧为难词/提示）："
+          : "💡 括弧内为较难英文字的华语意思，协助你理解作答：";
+        qBox.innerHTML = formatChineseParentheses(item.sentenceHTML);
+      }
+
+      renderQuizOptions(shuffleArray(item.enOptions), "en");
+      setOptionsDisabled(true);
+      document.getElementById("replaySentenceBtn").disabled = true;
+
+      const banner = document.getElementById("speechWaitBanner");
+      const bannerTxt = document.getElementById("speechWaitText");
+      banner.className = "bg-sky-50 border-2 border-sky-300 rounded-2xl px-4 py-2.5 mb-4 flex items-center justify-center gap-2.5 text-center";
+      document.getElementById("soundWaveAnim").classList.remove("hidden");
+      bannerTxt.className = "text-xs sm:text-sm font-black text-sky-900";
+      bannerTxt.textContent = "🔊 正在朗读句子，必须等句子读完后才能作答！";
+
+      document.getElementById("timerPhaseLabel").textContent = "🔊 正在朗读句子...";
+      document.getElementById("timerPhaseLabel").className = "text-sky-700 font-black";
+      document.getElementById("timerValueText").textContent = "聆听中";
+      document.getElementById("timerValueText").className = "text-sm sm:text-base text-sky-800 font-black";
+      document.getElementById("timerProgressBar").style.width = "100%";
+      document.getElementById("timerProgressBar").className = "h-full bg-sky-500 rounded-full transition-all duration-200";
+
+      document.getElementById("quizFeedbackArea").innerHTML = `<span class="text-xs sm:text-sm font-bold text-sky-700">请先认真听完英文朗读，读完后自动开启 20 秒倒计时 🎧</span>`;
+
+      const textToRead = (currentStageNum === 1) ? item.enClueSpoken : item.spokenSentence;
+      speakEnglishText(textToRead, onSentenceFinishedReading);
+    }
+
+    function onSentenceFinishedReading() {
+      if (!isReadingSentence) return;
+      isReadingSentence = false;
+      setOptionsDisabled(false);
+      document.getElementById("replaySentenceBtn").disabled = false;
+
+      const banner = document.getElementById("speechWaitBanner");
+      const bannerTxt = document.getElementById("speechWaitText");
+      banner.className = "bg-emerald-50 border-2 border-emerald-300 rounded-2xl px-4 py-2.5 mb-4 flex items-center justify-center gap-2.5 text-center";
+      document.getElementById("soundWaveAnim").classList.add("hidden");
+      bannerTxt.className = "text-xs sm:text-sm font-black text-emerald-800";
+      bannerTxt.textContent = "✅ 句子读完啦！请在 20 秒内依次完成第 1 步和第 2 步！";
+
+      document.getElementById("quizFeedbackArea").innerHTML = (currentStageNum === 1)
+        ? `<span class="text-xs sm:text-sm font-bold text-emerald-700">第 1 步：请根据英文意思选出正确的英文字！</span>`
+        : `<span class="text-xs sm:text-sm font-bold text-purple-700">第 1 步：请选出正确的英文字填入句子空格！</span>`;
+
+      start20SecAnswerCountdown();
+    }
+
+    function replayQuizSentence() {
+      const item = activeQuizList[currentQuizIdx];
+      if (!item) return;
+      const textToRead = (currentStageNum === 1) ? item.enClueSpoken : item.spokenSentence;
+      speakEnglishText(textToRead);
+    }
+
+    function start20SecAnswerCountdown() {
+      clearInterval(quizCountdownTimer);
+      quizSecondsLeft = 20;
+      updateCountdownUI(20);
+
+      quizCountdownTimer = setInterval(() => {
+        quizSecondsLeft--;
+        updateCountdownUI(quizSecondsLeft);
+
+        if (quizSecondsLeft <= 6 && quizSecondsLeft > 0) {
+          setBGMTension(true);
+          document.getElementById("quizPanel").classList.add("tension-border");
+        }
+
+        if (quizSecondsLeft <= 0) {
+          clearInterval(quizCountdownTimer);
+          setBGMTension(false);
+          document.getElementById("quizPanel").classList.remove("tension-border");
+          const item = activeQuizList[currentQuizIdx];
+          const correctEn = item.enOptions[0];
+          finalizeQuestion(false, `超过 20 秒未完成作答 (正解: ${correctEn} = ${item.meaning})`);
+        }
+      }, 1000);
+    }
+
+    function updateCountdownUI(sec) {
+      const pct = Math.max(0, (sec / 20) * 100);
+      const bar = document.getElementById("timerProgressBar");
+      const valTxt = document.getElementById("timerValueText");
+      const phaseTxt = document.getElementById("timerPhaseLabel");
+
+      bar.style.width = `${pct}%`;
+      valTxt.textContent = `${sec}s`;
+
+      if (sec <= 6) {
+        bar.className = "h-full bg-rose-600 rounded-full transition-all duration-200";
+        valTxt.className = "text-sm sm:text-base text-rose-600 font-black animate-ping";
+        phaseTxt.textContent = "🚨 时间快到了！快选！";
+        phaseTxt.className = "text-rose-600 font-black";
+      } else if (sec <= 12) {
+        bar.className = "h-full bg-amber-500 rounded-full transition-all duration-200";
+        valTxt.className = "text-sm sm:text-base text-amber-700 font-black";
+        phaseTxt.textContent = "⏳ 抓紧时间作答...";
+        phaseTxt.className = "text-amber-700 font-black";
+      } else {
+        bar.className = "h-full bg-emerald-500 rounded-full transition-all duration-200";
+        valTxt.className = "text-sm sm:text-base text-emerald-700 font-black";
+        phaseTxt.textContent = "⏱️ 20秒作答倒计时";
+        phaseTxt.className = "text-emerald-700 font-black";
+      }
+    }
+
+    function setOptionsDisabled(disabled) {
+      document.querySelectorAll("#quizOptionsGrid button").forEach(btn => {
+        btn.disabled = disabled;
+      });
+    }
+
+    function renderQuizOptions(optionsList, stepKind) {
+      const grid = document.getElementById("quizOptionsGrid");
+      grid.innerHTML = "";
+      const tags = ["A", "B", "C", "D"];
+      const badgeColor = stepKind === "en" ? "bg-sky-600" : "bg-rose-500";
+
+      optionsList.forEach((optText, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "btn-3d option-btn p-3.5 sm:p-4 rounded-2xl text-left font-black text-base sm:text-lg flex items-center gap-3";
+        btn.innerHTML = `
+          <span class="w-8 h-8 rounded-xl ${badgeColor} text-white flex items-center justify-center text-sm font-black shrink-0">
+            ${tags[idx]}
+          </span>
+          <span>${optText}</span>
+        `;
+        btn.onclick = () => onOptionClicked(optText);
+        grid.appendChild(btn);
+      });
+    }
+
+    function onOptionClicked(selectedVal) {
+      if (isReadingSentence) return;
+      const item = activeQuizList[currentQuizIdx];
+      const correctEn = item.enOptions[0];
+
+      if (currentStep === 1) {
+        step1SelectedText = selectedVal;
+        step1WasCorrect = (selectedVal.toLowerCase() === correctEn.toLowerCase());
+
+        if (step1WasCorrect) {
+          playFeedbackTone("step_ok");
+        } else {
+          playFeedbackTone("wrong");
+        }
+
+        if (currentStageNum === 2) {
+          const slot = document.querySelector("#quizQuestionBox .blank-slot");
+          if (slot) {
+            if (step1WasCorrect) {
+              slot.textContent = selectedVal;
+              slot.classList.add("filled-right");
+            } else {
+              slot.innerHTML = `<span class="line-through opacity-75 mr-1">${selectedVal}</span> ➔ ${correctEn}`;
+              slot.classList.add("filled-wrong");
+            }
+          }
+        }
+
+        // 无论第 1 步对或错，都必须进入第 2 步：选出华语意思
+        currentStep = 2;
+        const pill1 = document.getElementById("pillStep1");
+        const pill2 = document.getElementById("pillStep2");
+
+        if (step1WasCorrect) {
+          pill1.className = "px-3.5 py-1 rounded-full text-xs font-black bg-emerald-500 text-white";
+          pill1.textContent = `✅ 1. 英文正确 (${correctEn})`;
+          document.getElementById("quizFeedbackArea").innerHTML = `<span class="text-sm font-black text-emerald-700">👏 英文选对了！现在请选出 "${correctEn}" 的华语意思！</span>`;
+        } else {
+          pill1.className = "px-3.5 py-1 rounded-full text-xs font-black bg-rose-500 text-white";
+          pill1.textContent = `❌ 1. 英文误选 (正解: ${correctEn})`;
+          document.getElementById("quizFeedbackArea").innerHTML = `<span class="text-sm font-black text-rose-700">⚠️ 英文选错了（正解是 "${correctEn}"），请继续选出 "${correctEn}" 的华语意思！</span>`;
+        }
+
+        pill2.className = "px-3.5 py-1 rounded-full text-xs font-black bg-rose-600 text-white shadow-sm animate-pop";
+        pill2.textContent = `2️⃣ 快选 "${correctEn}" 的华语意思！`;
+
+        renderQuizOptions(shuffleArray(item.zhOptions), "zh");
+
+      } else if (currentStep === 2) {
+        const step2WasCorrect = (selectedVal === item.meaning);
+        const bothCorrect = step1WasCorrect && step2WasCorrect;
+
+        let noteText = "两步全对";
+        if (!step1WasCorrect && !step2WasCorrect) {
+          noteText = `英文误选 "${step1SelectedText}"，华语误选 "${selectedVal}" (正解: ${correctEn} = ${item.meaning})`;
+        } else if (!step1WasCorrect) {
+          noteText = `英文误选 "${step1SelectedText}" (正解: ${correctEn})，华语选对`;
+        } else if (!step2WasCorrect) {
+          noteText = `英文选对，华语误选 "${selectedVal}" (正解: ${item.meaning})`;
+        }
+
+        finalizeQuestion(bothCorrect, noteText);
+      }
+    }
+
+    function finalizeQuestion(isFullCorrect, detailNote) {
+      clearInterval(quizCountdownTimer);
+      clearTimeout(speechFallbackTimer);
+      setBGMTension(false);
+      document.getElementById("quizPanel").classList.remove("tension-border");
+      setOptionsDisabled(true);
+
+      const item = activeQuizList[currentQuizIdx];
+      const correctEn = item.enOptions[0];
+
+      if (isFullCorrect) {
+        totalRight++;
+        if (currentStageNum === 1) stage1Right++;
+        playFeedbackTone("all_ok");
+        document.getElementById("scoreRight").textContent = totalRight;
+        document.getElementById("quizFeedbackArea").innerHTML = `<span class="text-sm sm:text-base font-black text-emerald-600 animate-pop">🌟 太棒了！两步全对：${correctEn} = ${item.meaning}</span>`;
+      } else {
+        totalWrong++;
+        playFeedbackTone("wrong");
+        document.getElementById("scoreWrong").textContent = totalWrong;
+        document.getElementById("quizFeedbackArea").innerHTML = `<span class="text-xs sm:text-sm font-black text-rose-600 animate-shake">❌ 本题扣分！正解：${correctEn} (${item.meaning})</span>`;
+      }
+
+      reviewLog.push({
+        stage: currentStageNum === 1 ? "Stage 1" : "Stage 2",
+        num: currentQuizIdx + 1,
+        term: correctEn,
+        meaning: item.meaning,
+        sentence: item.spokenSentence,
+        isGrammar: item.isGrammar,
+        isCorrect: isFullCorrect,
+        note: detailNote
+      });
+
+      setTimeout(() => {
+        if (currentQuizIdx < activeQuizList.length - 1) {
+          currentQuizIdx++;
+          loadQuizQuestion(currentQuizIdx);
+        } else {
+          if (currentStageNum === 1) {
+            playFeedbackTone("unlock");
+            document.getElementById("stage1ScoreSummary").textContent = `Stage 1 成绩：${stage1Right} / ${activeQuizList.length} 题两步全对`;
+            document.getElementById("stageTransitionModal").classList.remove("hidden");
+          } else {
+            showFinalSummary();
+          }
+        }
+      }, 1250);
+    }
+
+    // =========================================================================
+    // 9. 总通关成绩单弹窗
+    // =========================================================================
+    function showFinalSummary() {
+      clearInterval(quizCountdownTimer);
+      setBGMTension(false);
+      playFeedbackTone("unlock");
+
+      const totalQuestions = reviewLog.length;
+      const pct = Math.round((totalRight / totalQuestions) * 100);
+
+      document.getElementById("summaryStudentMeta").textContent = `学生：${studentName} (${studentClass}) | Year 6 English • Unit 1: It's an Emergency!`;
+      document.getElementById("sumRight").textContent = `${totalRight} 题`;
+      document.getElementById("sumWrong").textContent = `${totalWrong} 题`;
+      document.getElementById("sumRate").textContent = `${pct}%`;
+
+      const listBox = document.getElementById("sumReviewList");
+      listBox.innerHTML = "";
+      reviewLog.forEach(entry => {
+        const stageTag = entry.stage === "Stage 1"
+          ? `<span class="bg-sky-200 text-sky-900 px-1.5 py-0.5 rounded font-black mr-1">Stage 1</span>`
+          : `<span class="bg-purple-200 text-purple-900 px-1.5 py-0.5 rounded font-black mr-1">Stage 2</span>`;
+        const gramTag = entry.isGrammar
+          ? `<span class="bg-amber-200 text-amber-900 px-1.5 py-0.5 rounded font-black mr-1">Grammar</span>`
+          : "";
+
+        const row = document.createElement("div");
+        row.className = `p-2.5 rounded-xl border flex flex-col gap-1 ${
+          entry.isCorrect ? "bg-emerald-50 border-emerald-200 text-emerald-900" : "bg-rose-50 border-rose-200 text-rose-900"
+        }`;
+        row.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span>${stageTag}${gramTag}<strong>第 ${entry.num} 题：</strong>${entry.term} (${entry.meaning})</span>
+            <span class="font-black">${entry.isCorrect ? "✅ 全对" : "❌ " + entry.note}</span>
+          </div>
+          <div class="text-[11px] opacity-80 italic">Sentence: "${entry.sentence}"</div>
+        `;
+        listBox.appendChild(row);
+      });
+
+      document.getElementById("summaryModal").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
